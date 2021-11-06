@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <!-- <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    /> -->
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+     
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css"> 
+    <!-- <link rel="stylesheet" href="scss/custom.scss" /> -->
+    <link rel="shortcut icon" href="lgpeti.svg" type="image/x-icon">
+
+    <!--<a href="index.html">
+      <img src="logo.4520c2d4.svg" alt="" class="logo">
+  </a>-->
+
+    <script src="https://kit.fontawesome.com/504f488958.js" crossorigin="anonymous"></script>
+    <title>Les Petits Plats</title>
+  </head>
+  <body>
+    <div id="backdrop"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <header class="page_header">
+            <img src="logo.4520c2d4.svg" alt="Home Page" class="logo">
+          </header>
+        </div>
+      </div>
+    </div>
+    
+    <main id="app" role="main">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="input-group rounded">
+              <input type="search" class="search-bar form-control rounded border-0 bg-light" placeholder="Rechercher un ingrédient, appareil, ustensile ou une recette" aria-label="Search" aria-describedby="search-addon">
+              <span class="input-group-text border-0" id="search-addon">
+                <i class="fas fa-search" aria-hidden="true"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="alerts">
+              <div class="alert alert-success" role="alert">
+            6 recettes correspondent à votre recherche
+            <i class="close-alert far fa-times-circle" aria-hidden="true"></i>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="tags"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="#">HTML</a></li>
+              <li><a href="#">CSS</a></li>
+              <li><a href="#">JavaScript</a></li>
+            </ul>
+          </div>
+          
+          <div class="col-12 btn-group-wrapper">
+
+           
+
+            <div class="btn-group">
+              <button type="button" class="button-ingredient btn btn-primary rounded text-white">
+                Ingrédients
+                <i class="dropdown-ingredient-toggle fas fa-chevron-down" aria-hidden="true"></i>
+              </button>
+              <div class="list-wrapper ingredient-list-wrapper rounded">
+                <label for="input-ingredient"></label>
+                <input type="search" class="input-dropdown" id="input-ingredient" placeholder="Rechercher un ingrédient">
+                <button type="button" class="close-dropdown-tag close-dropdown-ingredient">
+                  <i class="fas fa-chevron-up" aria-hidden="true"></i>
+                </button>
+                <ul class="dropdown-list ingredients-list"><li class="list-item ingredient">Lait de coco</li><li class="list-item ingredient">Jus de citron</li><li class="list-item ingredient">Crème de coco</li><li class="list-item ingredient">Sucre</li><li class="list-item ingredient">Glaçons</li><li class="list-item ingredient">Thon rouge (ou blanc)</li><li class="list-item ingredient">Concombre</li><li class="list-item ingredient">Tomates</li><li class="list-item ingredient">Carotte</li><li class="list-item ingredient">Citron vert</li><li class="list-item ingredient">Poulet</li><li class="list-item ingredient">Coulis de tomates</li><li class="list-item ingredient">Oignon</li><li class="list-item ingredient">Poivron rouge</li><li class="list-item ingredient">Huile d'olive</li><li class="list-item ingredient">Riz blanc</li><li class="list-item ingredient">Thon en miettes</li><li class="list-item ingredient">Oeuf dur</li><li class="list-item ingredient">Maïs</li><li class="list-item ingredient">Vinaigrette</li><li class="list-item ingredient">Pâte feuilletée</li><li class="list-item ingredient">Crème fraiche</li><li class="list-item ingredient">Gruyère râpé</li><li class="list-item ingredient">Moutarde de dijon</li><li class="list-item ingredient">Pâte brisée</li><li class="list-item ingredient">Pomme</li><li class="list-item ingredient">Oeuf</li><li class="list-item ingredient">Sucre en poudre</li><li class="list-item ingredient">Sucre vanillé</li><li class="list-item ingredient">Pâte sablée</li><li class="list-item ingredient">Chocolat au lait</li><li class="list-item ingredient">Crème liquide</li><li class="list-item ingredient">Beurre</li><li class="list-item ingredient">Fraises</li><li class="list-item ingredient">Noix</li><li class="list-item ingredient">Chocolat noir</li><li class="list-item ingredient">Farine</li><li class="list-item ingredient">Olives</li><li class="list-item ingredient">Fromage de chèvre</li><li class="list-item ingredient">Vinaigre balsamique</li><li class="list-item ingredient">Basilic</li><li class="list-item ingredient">Roblochon</li><li class="list-item ingredient">Pomme de terre</li><li class="list-item ingredient">Jambon fumé</li><li class="list-item ingredient">Vin blanc sec</li><li class="list-item ingredient">Tomates cerises</li><li class="list-item ingredient">Mozzarella</li><li class="list-item ingredient">Jambon de parme</li><li class="list-item ingredient">Salade verte</li><li class="list-item ingredient">Rhubarbe</li><li class="list-item ingredient">Eau</li><li class="list-item ingredient">Mâche</li><li class="list-item ingredient">Échalote</li><li class="list-item ingredient">Vinaigre de cidre</li><li class="list-item ingredient">Saucisse bretonne ou de toulouse</li><li class="list-item ingredient">Farine de blé noir</li><li class="list-item ingredient">Fromage à raclette</li><li class="list-item ingredient">Lait</li><li class="list-item ingredient">Beurre salé</li><li class="list-item ingredient">Banane</li><li class="list-item ingredient">Pennes</li><li class="list-item ingredient">Pastèque</li><li class="list-item ingredient">Menthe</li><li class="list-item ingredient">Ananas</li><li class="list-item ingredient">Glace à la vanille</li><li class="list-item ingredient">Kiwi</li><li class="list-item ingredient">Citron</li><li class="list-item ingredient">Sucre glace</li><li class="list-item ingredient">Tagliatelles</li><li class="list-item ingredient">Lardons</li><li class="list-item ingredient">Parmesan</li><li class="list-item ingredient">Spaghettis</li><li class="list-item ingredient">Viande hachée 1% de matière grasse</li><li class="list-item ingredient">Vin rouge</li><li class="list-item ingredient">Crème fraîche</li><li class="list-item ingredient">Tomate</li><li class="list-item ingredient">Macaronis</li><li class="list-item ingredient">Mayonnaise</li><li class="list-item ingredient">Chocolat noir en pepites</li><li class="list-item ingredient">Ail</li><li class="list-item ingredient">Oseille</li><li class="list-item ingredient">Vermicelles</li><li class="list-item ingredient">Poireau</li><li class="list-item ingredient">Pois chiches</li><li class="list-item ingredient">Paprika</li><li class="list-item ingredient">Pois cassés</li><li class="list-item ingredient">Haricots verts</li><li class="list-item ingredient">Petits pois</li><li class="list-item ingredient">Pain de mie</li><li class="list-item ingredient">Blanc de dinde</li><li class="list-item ingredient">Emmental</li><li class="list-item ingredient">Gruyère</li><li class="list-item ingredient">Noix de muscade</li><li class="list-item ingredient">Saumon fumé</li><li class="list-item ingredient">Feuilles de laitue</li><li class="list-item ingredient">Fromage blanc</li><li class="list-item ingredient">Patate douce</li><li class="list-item ingredient">Orange</li><li class="list-item ingredient">Cumin</li><li class="list-item ingredient">Courgette</li><li class="list-item ingredient">Lasagnes</li><li class="list-item ingredient">Maïzena</li><li class="list-item ingredient">Viande hachée</li><li class="list-item ingredient">Pain</li><li class="list-item ingredient">Sucre roux</li><li class="list-item ingredient">Bicarbonate</li><li class="list-item ingredient">Chocolat</li><li class="list-item ingredient">Poires au jus</li><li class="list-item ingredient">Boudoirs</li><li class="list-item ingredient">Beurre fondu</li><li class="list-item ingredient">Pruneaux</li><li class="list-item ingredient">Mascarpone</li><li class="list-item ingredient">Pâte à pizza</li><li class="list-item ingredient">Tomates pelées</li><li class="list-item ingredient">Champignons de paris</li><li class="list-item ingredient">Mangue</li><li class="list-item ingredient">Miel</li><li class="list-item ingredient">Poudre d'amandes</li></ul>
+              </div>
+
+              <button type="button" class="button-appliance btn btn-success rounded text-white">
+              Appareils
+                <i class="dropdown-appliance-toggle fas fa-chevron-down" aria-hidden="true"></i>
+              </button>
+              <div class="list-wrapper appliance-list-wrapper rounded">
+                <label for="input-appliance"></label>
+                <input type="search" class="input-dropdown" id="input-appliance" placeholder="Rechercher un appareil">
+                <button type="button" class="close-dropdown-tag close-dropdown-appliance">
+                  <i class="fas fa-chevron-up" aria-hidden="true"></i>
+                </button>
+                <ul class="dropdown-list appliances-list"><li class="list-item appliance">Blender</li><li class="list-item appliance">Saladier</li><li class="list-item appliance">Cocotte</li><li class="list-item appliance">Cuiseur de riz</li><li class="list-item appliance">Four</li><li class="list-item appliance">Casserole</li><li class="list-item appliance">Poêle à crêpes</li><li class="list-item appliance">Sauteuse</li><li class="list-item appliance">Mixer</li><li class="list-item appliance">Poêle</li><li class="list-item appliance">Moule à charlotte</li></ul>
+              </div>
+
+              <button type="button" class="button-utensil btn btn-danger rounded text-white">
+            Ustensiles
+              <i class="dropdown-utensil-toggle fas fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <div class="list-wrapper utensil-list-wrapper rounded">
+              <label for="input-utensil"></label>
+              <input type="search" class="input-dropdown" id="input-utensil" placeholder="Rechercher un ustensile">
+              <button type="button" class="close-dropdown-tag close-dropdown-utensil">
+                <i class="fas fa-chevron-up" aria-hidden="true"></i>
+              </button>
+              <ul class="dropdown-list utensils-list"><li class="list-item utensil">Cuillère à soupe</li><li class="list-item utensil">Verres</li><li class="list-item utensil">Presse citron</li><li class="list-item utensil">Couteau</li><li class="list-item utensil">Saladier</li><li class="list-item utensil">Passoire</li><li class="list-item utensil">Moule à tarte</li><li class="list-item utensil">Râpe à fromage</li><li class="list-item utensil">Fourchette</li><li class="list-item utensil">Moule à tartelettes (6)</li><li class="list-item utensil">Casserole</li><li class="list-item utensil">Moule à gateaux</li><li class="list-item utensil">Cuillère en bois</li><li class="list-item utensil">Plat à gratin</li><li class="list-item utensil">Économe</li><li class="list-item utensil">Cuillère à melon</li><li class="list-item utensil">Poêle à frire</li><li class="list-item utensil">Louche</li><li class="list-item utensil">Fouet</li><li class="list-item utensil">Rouleau à patisserie</li><li class="list-item utensil">Plaque de cuisson</li><li class="list-item utensil">Cocotte minute</li><li class="list-item utensil">Bol</li><li class="list-item utensil">Spatule</li><li class="list-item utensil">Moule</li></ul>
+            </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="recipes row"><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Limonade de Coco
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">10min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Lait de coco : 400 ml</li><li class="recipe-ingredient">Jus de citron : 2 </li><li class="recipe-ingredient">Crème de coco : 2 cuillères à soupe</li><li class="recipe-ingredient">Sucre : 30 grammes</li><li class="recipe-ingredient">Glaçons</li></ul>
+                  <p class="card-text">
+                  Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Poisson Cru à la tahitienne
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">60min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Thon Rouge (ou blanc) : 200 grammes</li><li class="recipe-ingredient">Concombre : 1 </li><li class="recipe-ingredient">Tomates : 2 </li><li class="recipe-ingredient">Carotte : 1 </li><li class="recipe-ingredient">Citron Vert : 5 </li><li class="recipe-ingredient">Lait de Coco : 100 ml</li></ul>
+                  <p class="card-text">
+                  Découper le thon en dés, mettre dans un plat et recouvrir de jus de citron vert (mieux vaut prendre un plat large et peu profond). Laisser reposer au réfrigérateur au moins 2 heures. (Si possible faites-le le soir pour le lendemain. Après avoir laissé mariner le poisson, coupez le concombre en fines rondelles sans la peau et les tomates en prenant soin de retirer les pépins. Rayer la carotte. Ajouter les légumes au poissons avec le citron cette fois ci dans un Saladier. Ajouter le lait de coco. Pour ajouter un peu plus de saveur vous pouver ajouter 1 à 2 cuillères à soupe de Crème de coco
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Poulet coco réunionnais
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">80min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Poulet : 1 </li><li class="recipe-ingredient">Lait de coco : 400 ml</li><li class="recipe-ingredient">Coulis de tomates : 25 cl</li><li class="recipe-ingredient">Oignon : 1 </li><li class="recipe-ingredient">Poivron rouge : 1 </li><li class="recipe-ingredient">Huile d'olive</li></ul>
+                  <p class="card-text">
+                  Découper le poulet en morceaux, les faire dorer dans une cocotte avec de l'huile d'olive. Salez et poivrez. Une fois doré, laisser cuire en ajoutant de l'eau. Au bout de 30 minutes, ajouter le coulis de tomates, le lait de coco ainsi que le poivron et l'oignon découpés en morceaux. Laisser cuisiner 30 minutes de plus. Servir avec du riz
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Salade de riz
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">50min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Riz blanc : 500 grammes</li><li class="recipe-ingredient">Thon en miettes : 200 grammes</li><li class="recipe-ingredient">Tomates : 2 </li><li class="recipe-ingredient">Oeuf dur : 2 </li><li class="recipe-ingredient">Maïs : 300 grammes</li><li class="recipe-ingredient">Vinaigrette : 5 cl</li></ul>
+                  <p class="card-text">
+                  Faire cuire le riz. Une fois le riz cuit, le laisser refroidir. Couper les oeufs durs en quarts ou en lamelle au choix, coupez les tomates en dés, ajouter au riz les oeufs, les tomates, le poisson, le maïs et la vinaigrette. Ajouter au gout de chacun des corniches, olives etc..
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Tarte au thon
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">45min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Pâte feuilletée : 1 </li><li class="recipe-ingredient">Thon en miettes : 130 grammes</li><li class="recipe-ingredient">Tomates : 2 </li><li class="recipe-ingredient">Crème fraiche : 2 cuillères à soupe</li><li class="recipe-ingredient">gruyère râpé : 100 grammes</li><li class="recipe-ingredient">Moutarde de Dijon : 1 cuillères à soupe</li></ul>
+                  <p class="card-text">
+                  Etaler la pâte feuilletée aux dimensions du moule, étaler la moutarde sur la pâte feuilleté, ajouter le thon. Découper les tomates en rondelles et les poser sur le poisson, ajouter un peu de crème fraiche sur toute la tarte et recouvrez de gruyère râpé. Cuire au four 30 minutes
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Tarte aux pommes
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">50min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Pâte brisée : 1 </li><li class="recipe-ingredient">Pomme : 3 </li><li class="recipe-ingredient">Oeuf : 2 </li><li class="recipe-ingredient">Crème fraiche : 25 cl</li><li class="recipe-ingredient">Sucre en Poudre : 100 grammes</li><li class="recipe-ingredient">Sucre vanillé : 1 sachets</li></ul>
+                  <p class="card-text">
+                  Commencez par mélanger les oeufs, le sucre et le sucre vanillé dans un saladier, découper les pommes en tranches, ajouter la crème fraiche aux oeufs. Une fois que tout est pret, étalez la tarte dans le moule. N'oubliez pas de piquer le fond avec une fourchette avant depositionner les pommes sur la tarte. Finallement verser la préparation à base d'oeufs et de crème fraiche. Laisser cuire au four pendant 30 minutes
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Tartelettes au chocolat et aux fraises
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">50min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Pâte sablée : 1 </li><li class="recipe-ingredient">Chocolat au lait : 300 grammes</li><li class="recipe-ingredient">Crème liquide : 80 cl</li><li class="recipe-ingredient">Beurre : 30 grammes</li><li class="recipe-ingredient">Fraises : 6 </li></ul>
+                  <p class="card-text">
+                  Etaler la pate dans les moules à tartelette. Faire cuire la pate 30 minutes. Découper le chocolat en morceau et le faire chauffer, y ajouter la crème liquide, ajouter le beurre et remuer jusqu'à avoir une pâte homogène. Verser la pate sur les tartelettes. Couper les fraises en 2 et les positionner sur 
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Brownie
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">60min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Noix : 180 grammes</li><li class="recipe-ingredient">Chocolat noir : 150 grammes</li><li class="recipe-ingredient">Beurre : 120 grammes</li><li class="recipe-ingredient">Oeuf : 2 </li><li class="recipe-ingredient">Sucre en Poudre : 110 grammes</li><li class="recipe-ingredient">farine : 90 grammes</li></ul>
+                  <p class="card-text">
+                  Hachez les noix grossièrement. Faire fondre le chocolat avec le beurre. Mélanger les oeufs et le sucre et mélanger au chocolat. Ajouter la farine. Mélanger afin d'avoir quelque chose d'homogène puis incorporer les noix. Verser la préparation dans un moule de préférence rectangulaire. Cuire 2O à 25 minutes à 180°. Sortez du four et attendez quelques minutes pour démouler. Servir avec une boule de glace pour plus de gourmandise.
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Salade Méditerannéene fraiche au chèvre
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">15min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Concombre : 1 </li><li class="recipe-ingredient">Olives</li><li class="recipe-ingredient">Fromage de chèvre : 150 grammes</li><li class="recipe-ingredient">Vinaigre balsamique</li><li class="recipe-ingredient">Huile d'olive</li><li class="recipe-ingredient">Basilic</li></ul>
+                  <p class="card-text">
+                  Peler le concombre le couper 2, retirer les pépins. Couper les olives en morceaux, ainsi que le fromage de chèvre. Ajouter le basilic ainsi que le vinaigre balsamic et l'huile d'olive à votre gout.
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Tartiflette
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">60min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Roblochon : 1 </li><li class="recipe-ingredient">Pomme de terre : 4.5 kg</li><li class="recipe-ingredient">Jambon fumé : 2 tranches</li><li class="recipe-ingredient">Oignon : 300 grammes</li><li class="recipe-ingredient">Vin blanc sec : 30 cl</li></ul>
+                  <p class="card-text">
+                  Commencer par cuire les pommes de terre dans l'eau bouillante. Puis epluchez les et coupez les en rondelles. Emincer les oignons puis les faire dorer dans du beurre. Ajouter le jambon fumé coupé en en morceaux ainsi que les pommes de terres. Salez, poivrez à votre gout ( et celui de vos convives ) Laissez cuisiner durant environ 10 minutes puis ajouter le vin blanc. Après 5 minutes, mettre le tout dans un plat à gratin. Coupez le rebelochon, soit en tranches, soit le couper en 2 dans le sens de l'épaisseur et recouvrir les pommes de terre. Cuire au four (environ 220°) durant 25 minutes. C'est prêt !
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Salade tomates, mozzarella et pommes
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">10min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Tomates cerises : 250 grammes</li><li class="recipe-ingredient">Mozzarella : 150 grammes</li><li class="recipe-ingredient">Jambon de parme : 4 tranches</li><li class="recipe-ingredient">Pomme : 1 </li><li class="recipe-ingredient">Salade Verte : 1 </li><li class="recipe-ingredient">Vinaigrette : 5 cl</li></ul>
+                  <p class="card-text">
+                  Commencer par couper les feuilles de salade, ajouter les tomates cerises et le fromage découpé en cubes ou en boules avec la cuillère à melon. Découper le jambon de parme en fines lamelles. Ajouter la pomme elle aussi découpée en petit morceaux. Assaisonnez à votre gout. 
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Compote pomme rhubarbe
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">40min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Rhubarbe : 160 grammes</li><li class="recipe-ingredient">Pomme : 8 </li><li class="recipe-ingredient">Sucre vanillé : 6 sachets</li><li class="recipe-ingredient">Eau : 0.5 tasses</li></ul>
+                  <p class="card-text">
+                  Éplucher les fruits et les couper en morceaux, les mettre dans une casserole en ajoutant l'eau et le sucre vanillé. Laisser cuire 15 minutes en remuant régulièrement.
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Salade mâchée de patates
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">40min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Mâche : 60 grammes</li><li class="recipe-ingredient">Pomme de terre : 200 grammes</li><li class="recipe-ingredient">Échalote : 2 </li><li class="recipe-ingredient">Vinaigre de cidre : 1 cuillère à soupe</li><li class="recipe-ingredient">huile d'olive : 2 cuillère à soupe</li></ul>
+                  <p class="card-text">
+                  Cuire les pommes de terre environ 30 minutes. Découper les échalottes finement. Durant la cuisson des pommes de terre. Préparez la vinaigrette avec l'huile d'olive et le vinaigre de cidre. Salez poivrez à discrétion. Dans un saladier, mettre le mâche. Ajouter
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Galette Bretonne Saucisse et Fromage à raclette
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">100min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Saucisse bretonne ou de toulouse : 2 </li><li class="recipe-ingredient">Farine de blé noir : 130 grammes</li><li class="recipe-ingredient">Oeuf : 1 </li><li class="recipe-ingredient">Fromage à raclette : 300 grammes</li><li class="recipe-ingredient">Oignon : 1 </li><li class="recipe-ingredient">Beurre : 75 grammes</li></ul>
+                  <p class="card-text">
+                  Mélanger la farine et les oeufs, faire fondre 25 grammes de beurre et ajouter à la pâte. Ajouter du sel. Laisser reposer 1 heure. Faire les galettes et laisser refroidire. Faire chauffer les saucisses avec du beurre et l'oignon. Enrouler les saucisses dans les crêpes avec une partie du fromage. Mettre le reste du fromage à raclette par dessus les crêpes. Passer four pendant 20 minutes
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Crêpes Chocolat Banane
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">60min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Oeuf : 3 </li><li class="recipe-ingredient">Farine : 250 grammes</li><li class="recipe-ingredient">Lait : 600 ml</li><li class="recipe-ingredient">Beurre salé : 30 grammes</li><li class="recipe-ingredient">Chocolat au lait : 100 grammes</li><li class="recipe-ingredient">Banane : 4 </li></ul>
+                  <p class="card-text">
+                  Mélangez dans un saladier, la farine, les oeufs, et le lait. Battez jusqu'à avoir une masse homogène. Pendant ce temps faites fondre le beurre et ajoutez en une partie à la pâte à crêpes. Faire fondre le chocolat ( avec le reste du beurre salé ). Lorsque vous chauffez les crêpes. Ajouter le chocolat fondu et les bananes coupées en rondelles. Ajoutez une touche de chantilly pour les gourmands
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Gratin de pâtes à la tomate
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">45min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Tomates : 500 grammes</li><li class="recipe-ingredient">Mozzarella : 250 grammes</li><li class="recipe-ingredient">Pennes : 500 grammes</li><li class="recipe-ingredient">Basilic : 1 tiges</li><li class="recipe-ingredient">huile d'olive : 2 cuillère à soupe</li></ul>
+                  <p class="card-text">
+                  Faire cuire les pâtes si vous n'avez pas de pennes des coquillettes peuvent faire l'affaire. Découper les tomates en petits morceaux, soit en tranches soit en dés. Coupez le basilic en petites morceaux et mélangez le aux tomates.  Coupez la mozzarella en tranche. Préchauffez le four à 200°. Alternez entre couches de pattes et couches de tomates, terminez par une couche de pates et recouvrir du fromage. Laisser au four 30 minutes et régalez vous ! Une recette simple qui fera plaisir au petits comme aux grands.
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Smoothie à la fraise
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">15min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Fraises : 500 grammes</li><li class="recipe-ingredient">Pastèque : 0.5 </li><li class="recipe-ingredient">Jus de citron : 1 cuillères à soupe</li><li class="recipe-ingredient">Glaçons : 8 </li><li class="recipe-ingredient">Menthe</li></ul>
+                  <p class="card-text">
+                  Coupez les fraises en morceaux, découpez la chaire de la pastèque en retirant les pépins. Mettre le tout dans le blender. Ajouter un cuillière à soupe de juste de citron ainsi que les glaçons. Ajoutez quelques fueilles de menthe pour plus de fraicheur. Mixez le tout. Servir et déguster.
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Smoothie ananas et vanille
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">10min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Ananas : 1 </li><li class="recipe-ingredient">Glace à la vanille : 500 ml</li><li class="recipe-ingredient">Lait : 50 cl</li></ul>
+                  <p class="card-text">
+                  Séparez 1/5ème d'Ananas ( une belle tranche qui servira pour la décoration des verres ), mettre le reste coupé en cubes au blender, ajouter la glace à la vanille et le lait. Mixez. Servir et décorer avec l'ananas restant. C'est prêt
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Shake Banane Kiwi
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">0min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Kiwi : 4 </li><li class="recipe-ingredient">Citron : 1 </li><li class="recipe-ingredient">Lait : 1 litres</li><li class="recipe-ingredient">Sucre glace : 30 grammes</li><li class="recipe-ingredient">Banane : 1 </li></ul>
+                  <p class="card-text">
+                  Coupez les fruits en morceaux, ajouter le jus de citron et le lait ainsi que le sucre glace. Mixez. Ajoutez des glaçons si le lait n'a pas été mis au frais.
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Pates Carbonara
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">30min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Tagliatelles : 500 grammes</li><li class="recipe-ingredient">Lardons : 150 grammes</li><li class="recipe-ingredient">Crème fraiche : 200 grammes</li><li class="recipe-ingredient">Parmesan : 100 grammes</li><li class="recipe-ingredient">huile d'olive : 1 cuillères à soupe</li></ul>
+                  <p class="card-text">
+                  Faire cuire les pates comme indiqué sur le paquet. Dorer les lardons dans une sauteuse avec l'huile d'olive. Ajouter la crème fraîche et baisser le feu au minimum. Quand les Tagliatelles sont prêtes les mettre dans la sauteuse et bien mélanger le tout en ajoutant le jaune d'oeuf. Servir et ajouter le parmesan râpé.
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Spaghettis à la bolognaise
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">30min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Spaghettis : 400 grammes</li><li class="recipe-ingredient">Oignon : 2 </li><li class="recipe-ingredient">Coulis de tomates : 300 grammes</li><li class="recipe-ingredient">Viande hachée 1% de matière grasse : 400 grammes</li><li class="recipe-ingredient">Vin rouge : 20 cl</li><li class="recipe-ingredient">Crème Fraiche : 1 cuillères à soupe</li></ul>
+                  <p class="card-text">
+                  Cuisiner la viande hachée dans une poêle à frire. Dans une autre faire cuire les oignons découpés en fins dés avec un peu de beurre. Ajouter du vin rouge. Mélanger les oigons avec la viande hachée. Faire cuire les pates le temps indiqué sur le paquet. Ajouter le coulis de tomates à la viande hachée. Une fois que les pates sont cuites, ajouter la crème fraiche à la viande hachée. Serivir.
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Fondant au chocolat
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">30min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Beurre : 160 grammes</li><li class="recipe-ingredient">Chocolat noir : 200 grammes</li><li class="recipe-ingredient">Farine : 50 grammes</li><li class="recipe-ingredient">Oeuf : 4 </li><li class="recipe-ingredient">Sucre : 150 grammes</li></ul>
+                  <p class="card-text">
+                  Faire fondre le chocolat et le beurre au bain marie. Dans un saladier battre les oeufs avec le sucre jusqu'à obtenir une texture de type mousse. Ajouter la farine ainsi que le mélange de beurre et chocolat fondu. Beurrez le moule à gateaux. Mettre au four préchauffé à 200° puis faites chauffer pendant 15 minutes. C'est prêt. Servir avec une boule de glace ou une crème dessert.
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Quiche lorraine
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">60min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Pâte brisée : 200 grammes</li><li class="recipe-ingredient">Lardons : 200 grammes</li><li class="recipe-ingredient">Beurre : 30 grammes</li><li class="recipe-ingredient">Oeuf : 3 </li><li class="recipe-ingredient">Crème Fraîche : 20 cl</li><li class="recipe-ingredient">Lait : 20 cl</li></ul>
+                  <p class="card-text">
+                  Etaler la pate dans un moule et la piquer.Parsemer de beurre. Faire chauffer les lardons dans une poêle. Battre les oeufs en ajoutant la crème fraîche et le lait. Finalement ajouter les lardons, salez poivrez à votre gout. Verser l'ensemble sur la pâte. Cuire environ 50 minutes.
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Salade de pâtes
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">40min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Thon en miettes : 160 grammes</li><li class="recipe-ingredient">Maïs : 60 grammes</li><li class="recipe-ingredient">Tomate : 1 </li><li class="recipe-ingredient">Concombre : 0.5 </li><li class="recipe-ingredient">Macaronis : 300 grammes</li><li class="recipe-ingredient">Mayonnaise : 2 cuillères à soupe</li></ul>
+                  <p class="card-text">
+                  Découper le concombre et les tomates en dés, les mettre dans un saladier avec le mais et les miettes de poisson, ajouter les pates. Ajouter la mayonnaise. Mélanger le tout et servir frais.
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Cookies
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">30min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Sucre : 100 grammes</li><li class="recipe-ingredient">Beurre : 100 grammes</li><li class="recipe-ingredient">Farine : 100 grammes</li><li class="recipe-ingredient">Chocolat noir en pepites : 100 grammes</li><li class="recipe-ingredient">Oeuf : 1 </li></ul>
+                  <p class="card-text">
+                  Faire fondre le beurre et le mélanger avec le sucre. Finalement ajouter l'oeuf. Ajouter la farine tout en mélangeant peu pa peu pour avoir une masse sans grumaux. Ajouter les pépites de chocolat. Faire, une plaque de cuisson de petites boules pour les cookies. Mettre au four à 180° pour 10 minutes.
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Soupe de tomates
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">25min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Tomates : 6 </li><li class="recipe-ingredient">Pomme de terre : 1 </li><li class="recipe-ingredient">Huile d'olive</li><li class="recipe-ingredient">Oignon : 1 </li><li class="recipe-ingredient">Ail : 1 gousse</li></ul>
+                  <p class="card-text">
+                  Verser de l'huile dans une cocotte minute couper les légumes et les verser dans l'huile chaude. Laisser cuire et remuer pendant 10 minutes. Passer aux mixer. Servir.
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Soupe à l'oseille
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">15min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Oseille : 2 </li><li class="recipe-ingredient">Oeuf : 1 </li><li class="recipe-ingredient">Crème fraîche : 4 cuillère à soupe</li><li class="recipe-ingredient">Vermicelles : 1 verres</li><li class="recipe-ingredient">Beurre salé : 50 grammes</li></ul>
+                  <p class="card-text">
+                  Faire fondre l'oseille avec du beurre demi sel, ajouter un litre d'eau. Ajouter les vermicelles. Laisser cuire. une foit prêt, sortir du feu et après 5 minutes ajouter le jaune d'oeuf et la crème fraîche
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Soupe de poireaux
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">80min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Poireau : 3 </li><li class="recipe-ingredient">Pomme de terre : 400 grammes</li><li class="recipe-ingredient">Oseille : 75 grammes</li><li class="recipe-ingredient">Beurre : 50 grammes</li><li class="recipe-ingredient">Crème fraîche : 10 cl</li></ul>
+                  <p class="card-text">
+                  Emincer les blanc de poireaux et les faire chauffer dans 25 grammes de beurre. AJouter les pommes de terres coupées en morceaux. Ajouter l'eau et laisser mijoter pour 45 minutes. Chauffer l'oseille avec le beurre restant puis incorporer le tout. Mixez. Ajoutez la crème. Bon appetit.
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Houmous Express
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">30min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Pois chiches : 1 boites</li><li class="recipe-ingredient">Ail : 1 gousses</li><li class="recipe-ingredient">Citron : 2 </li><li class="recipe-ingredient">Huile d'olive</li><li class="recipe-ingredient">Paprika</li></ul>
+                  <p class="card-text">
+                  Prendre les pois chiches, les mettre dans le mixer avec de l'huile d'olive, ajouter le jus des 2 citrons et du paprika selon le gout.
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Purée de pois cassés
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">60min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Pois Cassés : 500 grammes</li><li class="recipe-ingredient">Oignon : 1 </li><li class="recipe-ingredient">Ail : 2 gousses</li></ul>
+                  <p class="card-text">
+                  Mettre tous les ingrédients dans une cocotte. ajouter de l'eau pour recouvrir l'ensemble et laisser cuirre à petit feur pour 1 heure. Passer au mixer. Salez, poivrez. C'est prêt
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Jardinière de légumes
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">60min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Carotte : 2 </li><li class="recipe-ingredient">Pomme de terre : 2 </li><li class="recipe-ingredient">Haricots verts : 150 grammes</li><li class="recipe-ingredient">Petits pois : 100 grammes</li><li class="recipe-ingredient">Lardons : 150 grammes</li></ul>
+                  <p class="card-text">
+                  Découper en cubes les carottes et pommes de terre. Faire revenir dans du beurre. Ajouter les lardons, une fois les lardons dorés, ajouter un grand verre d'eau. Ajouter les petits pois et les haricots verts ( tous deux pré cuits ). Ajouter Sel, poivre, thyms et laurier
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Croque Monsieur à la dinde
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">20min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Pain de mie : 8 tranches</li><li class="recipe-ingredient">Blanc de dinde : 4 tranches</li><li class="recipe-ingredient">Emmental : 8 tranches</li><li class="recipe-ingredient">Gruyère : 100 grammes</li><li class="recipe-ingredient">Lait : 5 cl</li><li class="recipe-ingredient">Noix de muscade : 1 pincées</li></ul>
+                  <p class="card-text">
+                  Beurrer les tranches de pain, ajouter entre 2 tranches de pain de mie 1 tranche d'émental, une de blanc de dinde, et une autre d'emmental. Dans un récipient, mélanger le gruyère rappé avec le lait et la noix de muscade. Mettre sur les croque monsieux. Placer au four durnat 10 minutes.
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Sandwich au saumon fumé
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">5min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Pain de mie : 8 tranches</li><li class="recipe-ingredient">Saumon Fumé : 4 tranches</li><li class="recipe-ingredient">Feuilles de laitue : 4 </li><li class="recipe-ingredient">Fromage blanc : 4 cuillères à soupe</li><li class="recipe-ingredient">Jus de citron : 1 cuillères à soupe</li></ul>
+                  <p class="card-text">
+                  Mélanger le fromage blanc avec le citron. Ajouter un peu de sel et poivre à votre gout. Faire dorer le pain de mie. Puis étaler le mélange. Ajouter une feuille de salade puis le saumon fumé. C'est prêt.
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Purée de patate douce
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">25min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Patate douce : 800 grammes</li><li class="recipe-ingredient">Crème fraîche : 20 cl</li><li class="recipe-ingredient">Huile d'olive</li><li class="recipe-ingredient">Orange : 1 </li></ul>
+                  <p class="card-text">
+                  Eplucher les patates douces et coupez les en morceaux. Les faire cuire durant 20 minute dans une Casserole d'eau bouillante. Passer au mixer en ajoutant la crème et l'huile d'olive à son gout. Salez, poivrez. Pressez l'orange et ajouter le jus à l'ensemble. Servir.
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Purée de carottes
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">25min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Carotte : 6 </li><li class="recipe-ingredient">Pomme de terre : 1 </li><li class="recipe-ingredient">Beurre : 20 grammes</li><li class="recipe-ingredient">Crème fraîche : 2 cuillères à soupe</li><li class="recipe-ingredient">Cumin : 1 cuillères à café</li><li class="recipe-ingredient">Noix de muscade : 1 pincées</li></ul>
+                  <p class="card-text">
+                  Éplucher les légumes, les couper en morceaux et les mettre à cuire dans une cocotte minute environ 15 minutes. Mixer en ajoutant le beurre, la crème. Ajouter le cumun et la noix de muscade.
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Lasagne Courgettes et Chèvre
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">35min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Courgette : 2 </li><li class="recipe-ingredient">Fromage de chèvre : 4 </li><li class="recipe-ingredient">Lait : 25 cl</li><li class="recipe-ingredient">Lasagnes : 5 feuilles</li><li class="recipe-ingredient">Gruyère : 40 grammes</li><li class="recipe-ingredient">Maïzena : 1 cuillères à soupe</li></ul>
+                  <p class="card-text">
+                  Raper les courgette et les faire revenir durant 15 minutes. Ajouter les fromages de chèvre frais. Préparer la béchamelle avec le lait et la maizena. Salez poivrez, ajouter de la noix de muscade selon les gouts. Dans un plat, mettre un peu de sauces au fond, puis des lasagnes, puis des courgettes etc... terminer par de la sauces et ajouter le gruiyère. Passer au four à 180° durant 20 à 25 minutes.
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Courgettes farcies au boeuf
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">60min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Courgette : 2 </li><li class="recipe-ingredient">Viande hachée : 600 grammes</li><li class="recipe-ingredient">Huile d'olive : 25 cl</li><li class="recipe-ingredient">Oignon : 1 </li><li class="recipe-ingredient">Coulis de tomates : 20 cl</li><li class="recipe-ingredient">Gruyère : 50 grammes</li></ul>
+                  <p class="card-text">
+                  Couper les courgettes dans le sens de la longueur. Vider les courgette dans un saladier. Réserver.Faire revenir la chair des courgettes dans 25cl d'huile d'olive. Ajouter l'oignon puis la viande hachée. Mettre la farce dans les courgettes. Ajouter le coulis de tomates. Mettre au four pendant 30 minutes. Avant la fin de la cuisson ajouter le fromage rapé
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Pain Perdu
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">20min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Pain : 6 tranches</li><li class="recipe-ingredient">Lait : 25 cl</li><li class="recipe-ingredient">Oeuf : 3 </li><li class="recipe-ingredient">Sucre roux : 75 grammes</li></ul>
+                  <p class="card-text">
+                  Fouettez les oeufs, le sucre et le lait. tremper les tranches de pain. Le cuire au four pendant environ 10 minutes à 180°. Servir
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Crumble aux pommes
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">40min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Pomme : 2 </li><li class="recipe-ingredient">Farine : 100 grammes</li><li class="recipe-ingredient">Beurre : 50 grammes</li><li class="recipe-ingredient">Sucre roux : 80 grammes</li></ul>
+                  <p class="card-text">
+                  Découper les pommes en dé. Mélanger dans un saladier la farine, le sucre et le beurre. Bien mélanger. Beurrer le moule et ajouter les pommes. Par dessus placez la pate que vous avez obtenu. Cuire 20 minutes au four
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Limonade
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">10min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Eau : 1 Litres</li><li class="recipe-ingredient">Citron Vert : 3 </li><li class="recipe-ingredient">Sucre en poudre : 4 cuillères à café</li><li class="recipe-ingredient">Bicarbonate : 1 cuillères à café</li></ul>
+                  <p class="card-text">
+                  Dans un saladier mettre l'eau, le jus des cirtons et le sucre. Bien mélanger. Ajouter le bicarbonate. Servir. Ajouter des glaçon et une feuille de menthe pour la déco.
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Mousse au chocolat
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">20min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Oeuf : 3 </li><li class="recipe-ingredient">Chocolat noir : 100 grammes</li><li class="recipe-ingredient">Sucre vanillé : 1 sachets</li></ul>
+                  <p class="card-text">
+                  Séparer les blancs d'oeufs. Faire fondre le chocolat au bain marie. Ajouter les jaunes et le sucre au chocolat hors du feu. Battre les blancs en neige. Ajouter les blancs au mélange de chocolat. Mélangez délicatement avec une spatule. Servir dans un plat ou dans des verres. Mettre au frais
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Charlotte au poires
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">60min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Chocolat : 200 grammes</li><li class="recipe-ingredient">Oeuf : 3 </li><li class="recipe-ingredient">Poires au jus : 0.5 boites</li><li class="recipe-ingredient">Boudoirs : 15 </li></ul>
+                  <p class="card-text">
+                  Commencez par préparer la mousse au chocolat au moins 2 heures avant. Quand la mousse est prête et a reposée. Alors mouiller les boudoirs dans le jus des poires. Disposer. Alterner : mousse au chocolat, boudoirs et poires. Mettre au frais.
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Tarte au citron
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">50min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Pâte brisée : 200 grammes</li><li class="recipe-ingredient">Sucre : 150 grammes</li><li class="recipe-ingredient">Beurre fondu : 100 grammes</li><li class="recipe-ingredient">Oeuf : 3 </li><li class="recipe-ingredient">Citron</li></ul>
+                  <p class="card-text">
+                  Préchauffez le fours à 200°. Etaler la pate. La mettre dans un moule. Battre les oeufs avec le sucre. Ajouter le jus de citron et le beurre. Verser le tout sur la pate. Au four 30 minutes. Bon appetit 
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Crème déssert au chocolat
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">15min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Lait : 1 litres</li><li class="recipe-ingredient">Chocolat : 200 grammes</li><li class="recipe-ingredient">Sucre : 100 grammes</li><li class="recipe-ingredient">Beurre : 50 grammes</li><li class="recipe-ingredient">farine : 40 grammes</li></ul>
+                  <p class="card-text">
+                  Mélanger la farine et le beurre fondu en ajoutant le lait peu à peu. Ajouter du sucre après la cuisson. Bien mélanger. Ajouter le chocolat en morceaux et laisser chauffer 8 minutes en mélangeant avec une cuillère en bois. Mettre dans des verres
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Crème patissière
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">30min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Lait : 50 cl</li><li class="recipe-ingredient">Oeuf : 2 </li><li class="recipe-ingredient">Farine : 30 grammes</li><li class="recipe-ingredient">Sucre : 80 grammes</li></ul>
+                  <p class="card-text">
+                  Faire bouillir le lait ( on peut y ajouter de l'essence de vanille. Battre les oeufs et le sucre, ajouter la farine puis finalement ajouter le lait chaud. Remettre à feu doux pour faire épaissir en remuant pendant 5 à 10 minutes.
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Far breton
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">60min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Farine : 250 grammes</li><li class="recipe-ingredient">Sucre : 150 grammes</li><li class="recipe-ingredient">Sucre vanillé : 1 sachets</li><li class="recipe-ingredient">Oeuf : 4 </li><li class="recipe-ingredient">Lait : 1 litre</li><li class="recipe-ingredient">Pruneaux : 100 grammes</li></ul>
+                  <p class="card-text">
+                  Mélanger la farine avec le sucre et les oeufs en ajoutant du sucre vanillé. Ajouter le lait petit à petit. Ajouter un petit vers de rhum. Verser la masse dans un plat beurré y placer les pruneaux et faire cuire à 200° pendant 45 minutes
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Mousse au citron
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">5min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Jus de citron : 100 grammes</li><li class="recipe-ingredient">Mascarpone : 250 grammes</li><li class="recipe-ingredient">Sucre : 100 grammes</li><li class="recipe-ingredient">Crème Fraîche : 20 cl</li></ul>
+                  <p class="card-text">
+                  Mélanger le jus de citron avec le sucre et la mascarpone. Ajouter la crème fraiche. Mélanger le tout et mettre au congélateur pendant 1 heure. Servir
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Pizza
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">40min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Pâte à pizza : 1 </li><li class="recipe-ingredient">Tomates pelées : 1 boites</li><li class="recipe-ingredient">Lardons : 1 barquettes</li><li class="recipe-ingredient">Champignons de paris : 1 boites</li><li class="recipe-ingredient">Gruyère : 200 grammes</li></ul>
+                  <p class="card-text">
+                  Étaler la pate a pizza. Ecraser les tomates pelées, les étaler sur la pâte, ajouter les lardons et les champignons. Ajouter le gruyère eet passer au four à 220° durant 20 minutes
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Smoothie tropical
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">0min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Banane : 2 </li><li class="recipe-ingredient">Kiwi : 3 </li><li class="recipe-ingredient">Mangue : 1 </li><li class="recipe-ingredient">Ananas : 4 tranches</li><li class="recipe-ingredient">Miel : 2 cuillères à soupe</li></ul>
+                  <p class="card-text">
+                  Découper les fruits. Le passer au blender jusqu'à obtenir une texture liquide. Mettre au frais. Servir
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div><div class="recipe col-12 col-md-6 col-lg-4">
+            <div class="card rounded border-0">
+              <div class="card-header bg-secondary"></div>
+              <div class="card-body bg-light">
+                <div class="title-time">
+                  <h5 class="card-title m-0 font-weight-light">
+                    Frangipane
+                  </h5>
+                  <div class="recipe_time">
+                    <i class="far fa-clock" aria-hidden="true"></i>
+                    <h5 class="time">60min</h5>
+                  </div>
+                </div>
+                <div class="ingredients-directions row">
+                  <ul class="recipe-ingredient-list list-group list-unstyled bg-light"><li class="recipe-ingredient">Pâte feuilletée : 400 grammes</li><li class="recipe-ingredient">Oeuf : 6 </li><li class="recipe-ingredient">Poudre d'amandes : 500 grammes</li><li class="recipe-ingredient">Beurre : 500 grammes</li><li class="recipe-ingredient">Sucre glace : 500 grammes</li></ul>
+                  <p class="card-text">
+                  Préparer la frangipane : Mélanger le sucre la poudre d'amander, le beurre et les oeufs. Etaler la moitier de la pate feuilleté et mettre dans un moule à tarte. Garnir de frangipane et recouvrir du reste de pate feuilletée. Mettre au four 30 minutes
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          
+            </div></div>
+      </div>
+    </main>
+  </body>
+
+</html>

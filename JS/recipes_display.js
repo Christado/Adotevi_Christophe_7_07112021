@@ -7,10 +7,21 @@ class displayRecipesFactory {
     this.addRecipeToMainContainer();
   }
 
-  addRecipeToMainContainer() {
-    recipes.forEach((recipe) => {
-      this.addUlDOMElements(recipe);
-    });
+  addRecipeToMainContainer(filteredRecipes) {
+    this.recipesContainer.innerText = "";
+    const recipesToDisplay = filteredRecipes || recipes
+
+    
+    if (!recipesToDisplay || recipesToDisplay.length === 0) {
+      this.recipesContainer.innerHTML = `<p id = "error-message"> Oups...Votre recherche ne correspond à aucun résultat...Vous pouvez chercher "tarte aux pommes", "poisson", etc... </p>`
+      
+    
+    } else {
+      recipesToDisplay.forEach((recipe) => {
+        this.addUlDOMElements(recipe);
+      });
+    }
+    
   }
 
 // Affichage des recettes

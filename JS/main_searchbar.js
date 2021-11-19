@@ -1,7 +1,9 @@
 import { recipes } from "./datas.js";
+import { displayRecipesFactory } from "./recipes_display.js";
 
 class searchBarFactory {
   constructor() {
+    this.display = new displayRecipesFactory ()
     this.inputOfMainSearchBar = document.querySelector(".menuNav--searchInput");
     this.messageUnderInput = document.querySelector("#under-input-message");
 
@@ -21,6 +23,12 @@ class searchBarFactory {
         let descriptionOfRecipe;
         let ustensilsOfRecipe;
         let applianceOfRecipe;
+        const filteredRecipes = recipes.filter(recipe => {
+
+        return this.searchByName(recipe, inputValueNormalize) || this.searchByDescription(recipe, inputValueNormalize); //|| this.searchByIngredient(recipe, inputValueNormalize);//
+        })
+
+        this.display.addRecipeToMainContainer(filteredRecipes);
 
         recipes.forEach((recipe) => {
           nameOfRecipe = this.normalizeValues(recipe.name);
@@ -104,6 +112,22 @@ class searchBarFactory {
       this.messageUnderInput.innerHTML = `<p id = "error-message"> Oups...Votre recherche ne correspond à aucun résultat...Vous pouvez chercher "tarte aux pommes", "poisson", etc... </p>`;
     }
   }
+
+  searchByName(recipe, normalizedSearchInput) {
+    this.recipeName = this.normalizeValues(recipe.name);
+    return this.recipeName.includes(normalizedSearchInput);
+  }
+
+  searchByDescription(recipe, normalizedSearchInput) {
+    this.recipeDescription = this.normalizeValues(recipe.description);
+    return this.recipeDescription.includes(normalizedSearchInput);
+  }
+
+  /*searchByIngredient(recipe, normalizedSearchInput) {
+    this.recipeIngredient = this.normalizeValues(recipe.ingredients);
+    return this.recipeIngredient.includes(normalizedSearchInput);
+  }*/
+
 
   normalizeValues(value) {
     return value

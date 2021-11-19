@@ -5,7 +5,7 @@ import { ButtonListFactory, displayTagAboveMenuNav } from "./menuNav_tags.js";
 import { displayRecipesFactory } from "./recipes_display.js";
 
 new searchBarFactory();
-new displayRecipesFactory();
+//new displayRecipesFactory();
 
 let buttonIngredients = document.querySelector("#container-1_inactive");
 let listOfIngredients = document.querySelector(

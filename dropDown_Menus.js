@@ -111,7 +111,7 @@ class ButtonListFactory {
       //Comportement des boutons au clic
       buttonInactive.style.display = "none";
       buttonActive.style.display = "block";
-      buttonActive.firstChild.nextElementSibling.focus(); // FOCUS SUR L'INPUT / faire buttonActive.querySelector('.')
+      buttonActive.firstChild.nextElementSibling.focus(); // FOCUS SUR L'INPUT / 
       const closeActiveInputByChevron = (containerId, chevronId) => {
         if (buttonActive.id === containerId) {
           document.querySelector(chevronId).addEventListener("click", (e) => {
@@ -240,6 +240,7 @@ const displayTagAboveMenuNav = (articles) => {
 const closeTagAboveMenuNav = (arrayOfCrossCloseAbove) => {
   arrayOfCrossCloseAbove.forEach((cross) => {
     cross.addEventListener("click", (e) => {
+    
       e.target.parentNode.remove();
       //Lance la déselection des tags de recherches avancées et actualise les recettes + tags
       let restArticles = [];

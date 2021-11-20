@@ -6,8 +6,10 @@ class displayRecipesFactory {
     this.addRecipeToMainContainer();
   }
 
-  addRecipeToMainContainer() {
-    recipes.forEach((recipe) => {
+  addRecipeToMainContainer(filterRecipes) {
+    this.recipesContainer.innerText = ""
+    const receipesToDisplay = filterRecipes || recipes
+    receipesToDisplay.forEach((recipe) => {
       this.addUlDOMElements(recipe);
     });
   }

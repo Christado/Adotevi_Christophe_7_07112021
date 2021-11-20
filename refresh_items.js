@@ -1,5 +1,8 @@
 import { normalizeValues } from "./function_normalizeValue.js";
 import { recipes } from "./JS/datas.js";
+import { displayRecipesFactory } from "./recipes_display.js";
+
+const display = new displayRecipesFactory()
 //ALGO DE RECHERCHE 1
 const refreshRecipes = (articles, restArticles, input) => {
   searchAlgo1(articles, input);
@@ -122,17 +125,29 @@ const refreshRecipesAfterRemovingTags = (articles, restArticles, buttons) => {
   refreshDropDownMenus(restArticles);
 };
 
-const searchAlgo1 = (articles, input) => {
-  articles.forEach((article) => {
-    let articleFooter =
-      article.firstChild.nextElementSibling.nextElementSibling;
-    let footerValuesNorm = normalizeValues(articleFooter.innerHTML);
-    let inputValueNorm = normalizeValues(input);
+const searchByNamePredicate = (recipe,normalizedInput) => {
+  const normalizedName = normalizeValues(recipe.name)
+  return normalizedName.includes(normalizedInput)
+}
 
-    if (!footerValuesNorm.includes(inputValueNorm)) {
-      article.classList.add("hidden");
-    }
-  });
+const searchByDescriptionPredicate = (recipe,normalizedInput) => {
+  const normalizedDescription = normalizeValues(recipe.description)
+  return normalizedDescription.includes(normalizedInput)
+}
+
+const searchByIngredientPredicate = (recipe,normalizedInput) => {
+  const ingredientNames = recipe.ingredients.map(item => item.ingredient)
+  return ingredientNames.some(name => normalizeValues(name).includes(normalizedInput))
+  
+}
+const searchAlgo1 = (articles, input) => {
+  const inputValueNorm = normalizeValues(input)
+  const filterRecipes = recipes.filter((recipe)=>{
+   
+   return searchByNamePredicate(recipe,inputValueNorm) || searchByDescriptionPredicate(recipe,inputValueNorm) || searchByIngredientPredicate(recipe,inputValueNorm);
+  })
+  display.addRecipeToMainContainer(filterRecipes)
+  
 };
 
 

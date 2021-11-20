@@ -3,7 +3,7 @@ import { ButtonListFactory, displayTagAboveMenuNav } from "./dropDown_Menus.js";
 import { displayRecipesFactory } from "./recipes_display.js";
 
 //Génère les Recettes dans le DOM
-new displayRecipesFactory();
+//new displayRecipesFactory();
 
 // Variable Tableau qui contient toutes les recettes générées du DOM
 let articlesArray = [...document.querySelectorAll(".recipe")];

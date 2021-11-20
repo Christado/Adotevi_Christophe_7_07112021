@@ -1,37 +1,25 @@
-import { recipes } from "./datas.js";
+import { recipes } from "./JS/datas.js";
 
 class displayRecipesFactory {
   constructor() {
     this.recipesContainer = document.querySelector("#recipes-container");
-
     this.addRecipeToMainContainer();
   }
 
-  addRecipeToMainContainer(filteredRecipes) {
-    this.recipesContainer.innerText = "";
-    const recipesToDisplay = filteredRecipes || recipes
-
-    
-    if (!recipesToDisplay || recipesToDisplay.length === 0) {
-      this.recipesContainer.innerHTML = `<p id = "error-message"> Oups...Votre recherche ne correspond à aucun résultat...Vous pouvez chercher "tarte aux pommes", "poisson", etc... </p>`
-      
-    
-    } else {
-      recipesToDisplay.forEach((recipe) => {
-        this.addUlDOMElements(recipe);
-      });
-    }
-    
+  addRecipeToMainContainer() {
+    recipes.forEach((recipe) => {
+      this.addUlDOMElements(recipe);
+    });
   }
 
-// Affichage des recettes
-
-  createRecipeDOMElement(recipe, ingredientinfos) {
+  createRecipeDOMElement(recipe, ingredientinfos, applianceAndUstensilsInfos) {
     this.recipesContainer.insertAdjacentHTML(
       "afterbegin",
       `
         <article class="recipe">
-              <div class="recipe--background"></div>
+               
+                <img class = 'background_picture' src = "./img/recipes/${recipe.name}.jpg">
+              
               <footer class="recipe--information">
                   <h1 class="recipe--information_name">${recipe.name}</h1>
                   <h2 class="recipe--information_time"><i class="far fa-clock"></i> ${recipe.time} min</h2>
@@ -40,17 +28,17 @@ class displayRecipesFactory {
                       ${ingredientinfos}
                       </ul>
                       <p class="recipe--information--text_instructions">${recipe.description}</p>
+                      <p style = 'display : none'> ${recipe.appliance} ${recipe.ustensils} </p>
                   </div>
               </footer>
           </article>
         `
     );
   }
-  
-// Affichage des ingrédients
 
   addUlDOMElements(recipe) {
     let ingredientinfos = "";
+
     recipe.ingredients.forEach((ingredient) => {
       if (ingredient.quantity) {
         if (ingredient.unit && ingredient.quantity) {
@@ -62,6 +50,7 @@ class displayRecipesFactory {
         ingredientinfos += `<li><strong>${ingredient.ingredient}</strong></li>`;
       }
     });
+
     return this.createRecipeDOMElement(recipe, ingredientinfos);
   }
 }

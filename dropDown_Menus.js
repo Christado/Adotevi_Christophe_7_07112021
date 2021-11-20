@@ -1,28 +1,40 @@
-import { recipes } from "./datas.js";
+import {
+  normalizeValues,
+  sortByAlphabeticsOrder,
+} from "./function_normalizeValue.js";
+import { recipes } from "./JS/datas.js";
+import { NavigateInButton } from "./navigation_inside_button.js";
+
+import {
+  refreshRecipes,
+  refreshElementAfterRemoveTags,
+  returnDisplayedArticles,
+  refreshDropDownMenus,
+} from "./refresh_items.js";
 
 // Génère les élements de type TAGS dans les listes déroulantes
 class ButtonListFactory {
   constructor(
     name,
     button,
-    buttonExpanded,
+    listOfItems,
     nameOfClass,
     buttonForDisplay,
-    arrayOfItemsDisplayedInList,
     inactiveContainerID
   ) {
     this.name = name;
     this.button = button;
-    this.buttonExpanded = buttonExpanded;
+    this.listOfItems = listOfItems;
     this.nameOfClass = nameOfClass;
     this.buttonForDisplay = buttonForDisplay;
-    this.arrayOfItemsDisplayedInList = arrayOfItemsDisplayedInList;
     this.crossCloseButton = [];
     this.allIngredients = [];
     this.allAppliances = [];
     this.allUstensils = [];
     this.arrayOfChevronUp = [];
     this.inactiveContainerID = inactiveContainerID;
+
+    this.articlesArray = [...document.querySelectorAll(".recipe")];
     //METHODES APPELEES
 
     this.addTagsToButton(this.nameOfClass);
@@ -36,6 +48,8 @@ class ButtonListFactory {
     this.eraseDuplicateItem(this.allUstensils);
 
     this.openNavigationList(button, buttonForDisplay);
+
+    new NavigateInButton(this.listOfItems, this.articlesArray);
 
     this.closeDropDownMenuByClickingOutside(button, buttonForDisplay);
   }
@@ -72,13 +86,12 @@ class ButtonListFactory {
     eraseDuplicatedValues();
   }
 
+  // Trie les items des listes dans l'ordre alphabétique + les génère dans le DOM
   generateItemsListInDOM(array) {
-    array = array.sort((a, b) => {
-      return a > b ? 1 : -1;
-    });
+    sortByAlphabeticsOrder(array);
 
     array.forEach((item) => {
-      this.buttonExpanded.innerHTML += `
+      this.listOfItems.innerHTML += `
       <li tabIndex = "0" class ="name-of-item" title="${item}">${item}
       </li>`;
     });
@@ -87,9 +100,18 @@ class ButtonListFactory {
   //OUVRE ET FERME LES LISTES DEROULANTES
   openNavigationList(buttonInactive, buttonActive) {
     buttonInactive.addEventListener("click", (e) => {
+      //Supprime la classe 'Erase Temporarly' à l'ouverture du menu déroulant pou afficher le reste des tags disponibles
+      let listOfItems = [...document.querySelectorAll(".name-of-item")];
+      listOfItems.forEach((li) => {
+        if (li.className == "name-of-item erase-temporarly") {
+          li.classList.remove("erase-temporarly");
+        }
+      });
+
+      //Comportement des boutons au clic
       buttonInactive.style.display = "none";
       buttonActive.style.display = "block";
-      buttonActive.firstChild.nextElementSibling.focus(); // FOCUS SUR L'INPUT
+      buttonActive.firstChild.nextElementSibling.focus(); // FOCUS SUR L'INPUT / faire buttonActive.querySelector('.')
       const closeActiveInputByChevron = (containerId, chevronId) => {
         if (buttonActive.id === containerId) {
           document.querySelector(chevronId).addEventListener("click", (e) => {
@@ -99,10 +121,52 @@ class ButtonListFactory {
         }
       };
 
+      this.createMessageIfNoItemsRemainings();
+
       closeActiveInputByChevron("container-1_active", "#chevron-up-ingredient");
       closeActiveInputByChevron("container-2_active", "#chevron-up-appliance");
       closeActiveInputByChevron("container-3_active", "#chevron-up-ustensils");
     });
+  }
+
+  //Crée un message dans le dropDownMenu lorsqu'il est vide
+  createMessageIfNoItemsRemainings() {
+    let menus = [
+      ...document.querySelectorAll(".dropDownMenus--input_active_list"),
+    ];
+
+    menus.forEach((menu) => {
+      let endMessage = menu.querySelector(".end-message");
+      this.createMessageForEachDropdownMenus(menu, endMessage);
+    });
+  }
+
+  //Crée le message dans le DOM et le supprime si le dropdown est re rempli avec des items
+  createMessageForEachDropdownMenus(menu, endMessage) {
+    if (endMessage) {
+      endMessage.remove();
+    }
+    let itemsClassNames = [];
+
+    let itemArray = [...menu.querySelectorAll("li")];
+
+    itemArray.forEach((item) => {
+      itemsClassNames.push(item.className);
+    });
+    let itemIsHidden = (className) => className === "name-of-item hidden";
+    let allitemsAreHidden = itemsClassNames.every(itemIsHidden);
+
+    if (allitemsAreHidden) {
+      menu.insertAdjacentHTML(
+        "afterbegin",
+        `
+      <p class = 'end-message'>Il n'y a plus rien à selectionner dans cette section </p>`
+      );
+    } else {
+      if (endMessage) {
+        endMessage.remove();
+      }
+    }
   }
 
   closeDropDownMenuByClickingOutside(buttonInactive, buttonActive) {
@@ -113,15 +177,6 @@ class ButtonListFactory {
       ) {
         buttonActive.style.display = "none";
         buttonInactive.style.display = "block";
-        document
-          .querySelectorAll(".dropDownMenus--input_active_title")
-          .forEach((input) => {
-            input.value = null;
-            let list = [...document.querySelectorAll(".name-of-item")];
-            list.forEach((li) => {
-              li.style.display = "flex";
-            });
-          });
       }
     });
   }
@@ -129,7 +184,7 @@ class ButtonListFactory {
 
 // AFFICHE LES TAGS SELECTIONNES AU DESSUS DES BOUTONS
 
-const displayTagAboveMenuNav = () => {
+const displayTagAboveMenuNav = (articles) => {
   let arrayOfCrossCloseAbove = [];
   let tagSelectedContainer = document.querySelector(
     ".menuNav--buttons-selected-container"
@@ -137,17 +192,30 @@ const displayTagAboveMenuNav = () => {
   let arrayOfItems = [...document.querySelectorAll(".name-of-item")];
   arrayOfItems.forEach((item) => {
     item.addEventListener("click", (e) => {
+      let parentContainerOfTarget = e.target.parentNode.parentNode;
+      let inputAboveTarget =
+        parentContainerOfTarget.firstChild.nextElementSibling;
       e.preventDefault();
       tagSelectedContainer.insertAdjacentHTML(
         "afterbegin",
         `
-              <button class="menuNav--buttonTagSelected">${e.target.innerHTML}
-              <img class="menuNav--buttonTagSelected__crossClose" src="./img/cross-close.svg" alt="supprimer le tags">
+              <button class="menuNav--buttonTagSelected"> <p>${e.target.innerHTML}</p> <img class="menuNav--buttonTagSelected__crossClose" src="./img/cross-close.svg" alt="supprimer le tags">
           </button>`
       );
       let buttonForTagsAbove = document.querySelector(
         ".menuNav--buttonTagSelected"
       );
+
+      let valueOfItemSelected = normalizeValues(e.target.innerHTML).trim();
+      let restArticles = [];
+      restArticles.splice(0, restArticles.length);
+
+      //Supprime la valeur entrée au clic sur un tag
+      if (inputAboveTarget.value) inputAboveTarget.value = null;
+
+      //Lance la recherche avancée par tag au clic sur un tag
+
+      refreshRecipes(articles, restArticles, valueOfItemSelected);
 
       // DEFINIT LA COULEUR DE L'ARRIERE-PLAN DU BOUTON DE TAG SELECTIONNE
       const getBgColorOfTagsAbove = (e, className, color) => {
@@ -173,8 +241,33 @@ const closeTagAboveMenuNav = (arrayOfCrossCloseAbove) => {
   arrayOfCrossCloseAbove.forEach((cross) => {
     cross.addEventListener("click", (e) => {
       e.target.parentNode.remove();
+      //Lance la déselection des tags de recherches avancées et actualise les recettes + tags
+      let restArticles = [];
+      restArticles.splice(0, restArticles.length);
+      let input = document.querySelector(".menuNav--searchInput");
+      if (!input.value) {
+        refreshElementAfterRemoveTags(restArticles);
+      }
+      let buttons = [
+        ...document.querySelectorAll(".menuNav--buttonTagSelected"),
+      ];
+      let articles = [...document.querySelectorAll(".recipe")];
+      if (input.value && buttons.length < 1) {
+        articles.forEach((article) => {
+          article.classList.remove("hidden");
+          let articleFooter =
+            article.firstChild.nextElementSibling.nextElementSibling;
+          let footerValuesNorm = normalizeValues(articleFooter.innerHTML);
+          let inputValue = normalizeValues(input.value);
+          if (!footerValuesNorm.includes(inputValue)) {
+            article.classList.add("hidden");
+          }
+          returnDisplayedArticles(restArticles, articles);
+          refreshDropDownMenus(restArticles);
+        });
+      }
     });
   });
 };
 
-export { ButtonListFactory, displayTagAboveMenuNav };
+export { ButtonListFactory, displayTagAboveMenuNav, closeTagAboveMenuNav };

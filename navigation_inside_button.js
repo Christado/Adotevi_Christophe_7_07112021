@@ -1,9 +1,10 @@
-// Comportement des menus dropDown dynamique
-
+import { normalizeValues } from "./function_normalizeValue.js";
 class NavigateInButton {
-  constructor(listOfItems, arrayOfItemsDisplayed) {
+  constructor(listOfItems, articles) {
     this.listOfItems = listOfItems;
-    this.arrayOfItemsDisplayed = arrayOfItemsDisplayed;
+    // console.log(this.listOfItems);
+    this.articles = articles;
+
     this.inputsForSearchArray = [
       ...document.querySelectorAll(".dropDownMenus--input_active_title"),
     ];
@@ -13,18 +14,24 @@ class NavigateInButton {
     this.listOfItemsArray = [...listOfItems.children];
 
     this.searchThroughItems(this.inputsForSearchArray);
+
+    
   }
 
   searchThroughItems(inputs) {
     inputs.forEach((input) => {
       input.addEventListener("input", (e) => {
         if (this.listOfItems.parentNode === input.parentNode) {
-          let valueLowCaseAndWithoutAccent = this.normalizeValues(input.value);
+          let valueLowCaseAndWithoutAccent = normalizeValues(input.value);
 
-          //Ici les diff fonctions appelées lors de la saisie
           this.listOfItemsArray.forEach((li) => {
-            li.style.display = "none";
-            let titleLowCaseAndWithoutAccent = this.normalizeValues(li.title);
+            //Supprime temporairement les éléments restants de la liste des tags affinée
+            if (li.className !== "name-of-item hidden") {
+              li.classList.add("erase-temporarly");
+            }
+
+            let titleLowCaseAndWithoutAccent = normalizeValues(li.title);
+            //Affiche les items avec la même valeur que la saisie entrée dans l'input
             this.displayItemsWithSameValuesAsEnteredInInput(
               titleLowCaseAndWithoutAccent,
               valueLowCaseAndWithoutAccent,
@@ -36,21 +43,14 @@ class NavigateInButton {
     });
   }
 
-  normalizeValues(value) {
-    return value
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .toLowerCase();
-  }
-// Affichage uniquement de l'element ecrit dans la menu
-
+  //Affiche les items dans la liste déroulante qui ont la même valeur que la saisie
   displayItemsWithSameValuesAsEnteredInInput(titleOfItems, valueOfInput, li) {
-    if (titleOfItems.includes(valueOfInput)) {
-      li.style.display = "flex";
-      this.arrayOfItemsDisplayed.push(li.title);
+    if (li.className === "name-of-item erase-temporarly") {
+      if (titleOfItems.includes(valueOfInput)) {
+        li.classList.remove("erase-temporarly");
+      }
     }
   }
-
 }
 
 export { NavigateInButton };

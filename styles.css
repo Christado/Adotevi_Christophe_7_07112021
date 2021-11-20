@@ -132,7 +132,7 @@ body {
   background-color: transparent;
   font-size: 18px;
   color: #fff;
-  outline-color: white;
+  outline-width: 0;
 }
 .dropDownMenus--input_active_title::placeholder {
   color: #fff;
@@ -192,18 +192,34 @@ body {
   display: none;
 }
 
+#error-message {
+  text-align: center;
+  padding-top: 30px;
+  font-size: 20px;
+}
+#error-message i {
+  font-size: 30px;
+}
+
 #recipes-container {
   padding-top: 90px;
   display: flex;
   width: 100%;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: start;
   gap: 50px;
+}
+
+.background_picture {
+  object-fit: cover;
+  width: 100%;
+  height: 178px;
+  border-radius: 5px 5px 0 0;
 }
 
 .recipe {
   min-width: 380px;
-  max-width: 380px;
+  width: 30%;
   min-height: 300px;
 }
 .recipe--background {
@@ -213,9 +229,11 @@ body {
 }
 .recipe--information {
   background-color: #e7e7e7;
+  margin-top: -3px;
   border-radius: 0 0 5px 5px;
   padding: 20px 20px 0px 20px;
   min-height: 180px;
+  max-height: 180px;
 }
 .recipe--information_name {
   display: inline;
@@ -245,6 +263,19 @@ body {
   display: inline;
   margin: unset;
   font-size: 12px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  max-height: 120px;
+  text-overflow: ellipsis;
+  padding-left: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+.erase-temporarly {
+  display: none;
 }
 
 @media (max-width: 1472px) {
@@ -262,4 +293,4 @@ body {
   }
 }
 
-
+/*# sourceMappingURL=styles.css.map */

@@ -1,9 +1,8 @@
 import { normalizeValues } from "./function_normalizeValue.js";
-import { recipes } from "./JS/datas.js";
 import { displayRecipesFactory } from "./recipes_display.js";
 
 const display = new displayRecipesFactory()
-//ALGO DE RECHERCHE 1
+
 const refreshRecipes = (articles, restArticles, input) => {
   searchAlgo1(articles, input);
 
@@ -41,10 +40,10 @@ const displayCorrespondantTagsOnly = (restArticles, items) => {
   //Refresh Tags that correspond to the recipes filters remaining
   restArticles.forEach((article) => {
     let infos =
-      article.firstChild.nextElementSibling.nextElementSibling.innerHTML;
+      article.firstChild.nextElementSibling.nextElementSibling.innerText;
     infos = normalizeValues(infos);
     items.forEach((item) => {
-      nameOfItem = item.innerHTML;
+      nameOfItem = item.innerText;
       nameOfItem = normalizeValues(nameOfItem).trim();
       if (infos.includes(nameOfItem)) {
         item.classList.remove("hidden");
@@ -61,7 +60,7 @@ const eraseValuesAlreadySelected = (items) => {
   inputValue = normalizeValues(inputValue);
   let nameOfItem;
   items.forEach((item) => {
-    nameOfItem = normalizeValues(item.innerHTML).trim();
+    nameOfItem = normalizeValues(item.innerText).trim();
     if (nameOfItem === inputValue) {
       item.classList.add("hidden");
     }
@@ -71,14 +70,13 @@ const eraseValuesAlreadySelected = (items) => {
     let buttonName = button.firstChild.nextElementSibling.innerText;
     buttonName = normalizeValues(buttonName);
     items.forEach((item) => {
-      nameOfItem = item.innerHTML;
+      nameOfItem = item.innerText;
       nameOfItem = normalizeValues(nameOfItem).trim();
       if (nameOfItem === buttonName) {
         item.classList.add("hidden");
       }
     });
 
-    
   });
 };
 
@@ -113,7 +111,7 @@ const refreshRecipesAfterRemovingTags = (articles, restArticles, buttons) => {
   articles.forEach((article) => {
     let articleFooter =
       article.firstChild.nextElementSibling.nextElementSibling;
-    let footerValuesNorm = normalizeValues(articleFooter.innerHTML);
+    let footerValuesNorm = normalizeValues(articleFooter.innerText);
     buttons.forEach((button) => {
       let buttonValueNorm = normalizeValues(button.innerText);
       if (!footerValuesNorm.includes(buttonValueNorm)) {
@@ -125,29 +123,17 @@ const refreshRecipesAfterRemovingTags = (articles, restArticles, buttons) => {
   refreshDropDownMenus(restArticles);
 };
 
-const searchByNamePredicate = (recipe,normalizedInput) => {
-  const normalizedName = normalizeValues(recipe.name)
-  return normalizedName.includes(normalizedInput)
-}
-
-const searchByDescriptionPredicate = (recipe,normalizedInput) => {
-  const normalizedDescription = normalizeValues(recipe.description)
-  return normalizedDescription.includes(normalizedInput)
-}
-
-const searchByIngredientPredicate = (recipe,normalizedInput) => {
-  const ingredientNames = recipe.ingredients.map(item => item.ingredient)
-  return ingredientNames.some(name => normalizeValues(name).includes(normalizedInput))
-  
-}
 const searchAlgo1 = (articles, input) => {
-  const inputValueNorm = normalizeValues(input)
-  const filterRecipes = recipes.filter((recipe)=>{
-   
-   return searchByNamePredicate(recipe,inputValueNorm) || searchByDescriptionPredicate(recipe,inputValueNorm) || searchByIngredientPredicate(recipe,inputValueNorm);
-  })
-  display.addRecipeToMainContainer(filterRecipes)
-  
+  articles.forEach((article) => {
+    let articleFooter =
+      article.firstChild.nextElementSibling.nextElementSibling;
+    let footerValuesNorm = normalizeValues(articleFooter.innerText);
+    let inputValueNorm = normalizeValues(input);
+
+    if (!footerValuesNorm.includes(inputValueNorm)) {
+      article.classList.add("hidden");
+    }
+  });
 };
 
 

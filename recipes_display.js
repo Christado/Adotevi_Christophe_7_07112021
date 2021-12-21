@@ -1,9 +1,27 @@
 import { recipes } from "./JS/datas.js";
+import { DropDowIng } from "./dropDownIng.js";
+import { DropDownUst } from "./dropDownUst.js";
+import { DropDownApp } from "./dropDownApp.js";
 
 class displayRecipesFactory {
-  constructor() {
+  constructor(searchByTag, dropTag) 
+  
+  
+  {
+    this.searchByTag = searchByTag;
+    this.dropTag = dropTag;
     this.recipesContainer = document.querySelector("#recipes-container");
-    this.addRecipeToMainContainer();
+    this.init();
+    this.initIngredient();
+    this.initUstensil();
+    this.initAppliance();
+  }
+
+  init() {
+    this.recipesContainer.innerText = ""
+    recipes.forEach((recipe) => {
+      this.addUlDOMElements(recipe);
+    });
   }
 
   addRecipeToMainContainer(filterRecipes) {
@@ -12,6 +30,9 @@ class displayRecipesFactory {
     receipesToDisplay.forEach((recipe) => {
       this.addUlDOMElements(recipe);
     });
+    this.dropDowIng.refresh(filterRecipes);
+    this.dropDownUst.refresh(filterRecipes);
+    this.dropDownApp.refresh(filterRecipes);
   }
 
   createRecipeDOMElement(recipe, ingredientinfos, applianceAndUstensilsInfos) {
@@ -55,6 +76,76 @@ class displayRecipesFactory {
 
     return this.createRecipeDOMElement(recipe, ingredientinfos);
   }
+
+   refrshDropDown = (filterRecipes) => {
+
+    listOfIngredients.innerText = ""
+    listOfUstensils.innerText = ""
+    listOfAppliance.innerText = ""
+    new DropDowIng(
+      "ingredient",
+      buttonIngredients,
+      listOfIngredients,
+      "ingredients",
+      buttonIngredientExpanded,
+      "container-1_active",
+       filterRecipes,
+       searchByTag
+    
+    );
+    
+    /*new DropDownApp(
+      "appliance",
+      buttonAppliance,
+      listOfAppliance,
+      "appliances",
+      buttonApplianceExpanded,
+      "container-2_active",
+      filterRecipes,
+      searchByTag
+    );*/
+    
+   /* new DropDownUst(
+      "ustensil",
+      buttonUstensils,
+      listOfUstensils,
+      "ustensils",
+      buttonUstensilsExpanded,
+      "container-3_active",
+      filterRecipes,
+      searchByTag
+    );*/
+  }
+
+  initIngredient () {
+    this.dropDowIng = new DropDowIng(
+       recipes,
+       this.searchByTag,
+       this.dropTag,
+    
+    );
+  }
+
+  initUstensil () {
+    this.dropDownUst = new DropDownUst(
+      recipes,
+      this.searchByTag,
+      this.dropTag,
+   
+   );
+  }
+
+  initAppliance () {
+    this.dropDownApp = new DropDownApp(
+      recipes,
+      this.searchByTag,
+      this.dropTag,
+      
+   
+   );
+
+  }
+
 }
 
 export { displayRecipesFactory };

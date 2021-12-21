@@ -1,6 +1,9 @@
 import { CreateSearchBarFactory } from "./main_searchbar.js";
-import { ButtonListFactory, displayTagAboveMenuNav } from "./dropDown_Menus.js";
+import { displayTagAboveMenuNav } from "./dropDownApp.js";
 import { displayRecipesFactory } from "./recipes_display.js";
+import { recipes } from "./JS/datas.js";
+import { DropDowIng } from "./dropDownIng.js";
+
 
 //Génère les Recettes dans le DOM
 //new displayRecipesFactory();
@@ -32,22 +35,24 @@ let buttonIngredientExpanded = document.querySelector("#container-1_active");
 let buttonApplianceExpanded = document.querySelector("#container-2_active");
 let buttonUstensilsExpanded = document.querySelector("#container-3_active");
 
-new ButtonListFactory(
+/*new DropDowIng(
   "ingredient",
   buttonIngredients,
   listOfIngredients,
   "ingredients",
   buttonIngredientExpanded,
-  "container-1_active"
-);
+  "container-1_active",
+   recipes
+);*/
 
-new ButtonListFactory(
+/*new ButtonListFactory(
   "appliances",
   buttonAppliance,
   listOfAppliance,
   "appliances",
   buttonApplianceExpanded,
-  "container-2_active"
+  "container-2_active",
+  recipes
 );
 
 new ButtonListFactory(
@@ -56,7 +61,8 @@ new ButtonListFactory(
   listOfUstensils,
   "ustensils",
   buttonUstensilsExpanded,
-  "container-3_active"
-);
+  "container-3_active",
+  recipes
+);*/
 
-displayTagAboveMenuNav(articlesArray);
+//displayTagAboveMenuNav(articlesArray);

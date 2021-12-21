@@ -74,6 +74,18 @@ body {
 .menuNav--buttonTagSelected_ingredientTag {
   background-color: #3282f7;
 }
+
+.menuNav--buttonTagSelected.ingredientTag {
+  background-color: #3282f7;
+}
+
+.menuNav--buttonTagSelected.ustensilTag {
+  background-color: #ed6454;
+}
+
+.menuNav--buttonTagSelected.applianceTag {
+  background-color: #68d9a4;
+}
 .menuNav--buttonTagSelected__crossClose {
   margin-left: 10px;
   cursor: pointer;

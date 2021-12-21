@@ -4,14 +4,14 @@ import { searchAlgo } from "./first_algorithm.js";
 
 
 
-const refreshRecipes = (articles,restArticles, input) => {
- const filtredRecipes = searchAlgo(articles, input);
- //const filtredTags = searchAlgo1(articles, input);
- //display.addRecipeToMainContainer(filtredTags);
-  //returnDisplayedArticles(restArticles, articles, items, input);
+const refreshRecipes = (articles, restArticles, input) => {
+ //const filtredRecipes = searchAlgo(articles, input);
+ const filtredTags = searchAlgo1(articles, input);
+ //const filtredTags1 = displayCorrespondantTagsOnly(restArticles, items, article)
+ //display.addRecipeToMainContainer(filtredRecipes);
+  //returnDisplayedArticles(restArticles, articles);
   //refreshDropDownMenus(restArticles);
 };
-
 
 const returnDisplayedArticles = (restArticles, articles) => {
   articles.forEach((article) => {
@@ -148,6 +148,5 @@ export {
   returnDisplayedArticles,
   refreshDropDownMenus,
   refreshRecipesAfterRemovingTags,
-  displayCorrespondantTagsOnly,
   //searchAlgo1,
 };

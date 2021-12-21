@@ -2,8 +2,12 @@ import { normalizeValues } from "./function_normalizeValue.js";
 class NavigateInButton {
   constructor(listOfItems, articles) {
     this.listOfItems = listOfItems;
-    // console.log(this.listOfItems);
+    console.log(articles);
     this.articles = articles;
+    /*this.items = items;
+    this.type = type;
+    this.input = null;
+    this.onSearch = onSearch;*/
 
     this.inputsForSearchArray = [
       ...document.querySelectorAll(".dropDownMenus--input_active_title"),
@@ -19,6 +23,8 @@ class NavigateInButton {
   }
 
   searchThroughItems(inputs) {
+   
+
     inputs.forEach((input) => {
       input.addEventListener("input", (e) => {
         if (this.listOfItems.parentNode === input.parentNode) {
@@ -42,6 +48,10 @@ class NavigateInButton {
       });
     });
   }
+
+ /* refresh () {
+    this.searchThroughItems(this.inputsForSearchArray);
+  }*/
 
   //Affiche les items dans la liste déroulante qui ont la même valeur que la saisie
   displayItemsWithSameValuesAsEnteredInInput(titleOfItems, valueOfInput, li) {

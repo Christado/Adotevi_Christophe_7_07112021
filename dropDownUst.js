@@ -2,7 +2,7 @@ import {
   normalizeValues,
   sortByAlphabeticsOrder,
 } from "./function_normalizeValue.js";
-import { recipes } from "./JS/datas.js";
+//import { recipes } from "./JS/datas.js";
 import { NavigateInButton } from "./navigation_inside_button.js";
 
 import {
@@ -10,29 +10,36 @@ import {
   refreshElementAfterRemoveTags,
   returnDisplayedArticles,
   refreshDropDownMenus,
+  displayCorrespondantTagsOnly,
 } from "./refresh_items.js";
+import { TagUst } from "./TagUst.js";
 
 // Génère les élements de type TAGS dans les listes déroulantes
-class ButtonListFactory {
+class DropDownUst {
   constructor(
-    name,
-    button,
-    listOfItems,
-    nameOfClass,
-    buttonForDisplay,
-    inactiveContainerID
+  
+    
+    recipes,
+    searchByTag,
+    dropTag
   ) {
-    this.name = name;
-    this.button = button;
-    this.listOfItems = listOfItems;
-    this.nameOfClass = nameOfClass;
-    this.buttonForDisplay = buttonForDisplay;
+    this.name = 'ustensil';
+    
+    this.button = document.querySelector("#container-3_inactive");
+    this.listOfItems = document.querySelector(
+      ".dropDownMenus--input_active_list_ustensils"
+    );
+    this.nameOfClass = 'ustensils';
+    this.buttonForDisplay = document.querySelector("#container-3_active");
     this.crossCloseButton = [];
     this.allIngredients = [];
     this.allAppliances = [];
     this.allUstensils = [];
     this.arrayOfChevronUp = [];
-    this.inactiveContainerID = inactiveContainerID;
+    this.inactiveContainerID = "container-3_active";
+    this.recipes = recipes
+    this.searchByTag = searchByTag
+    this.dropTag = dropTag
 
     this.articlesArray = [...document.querySelectorAll(".recipe")];
     //METHODES APPELEES
@@ -47,19 +54,22 @@ class ButtonListFactory {
     this.eraseDuplicateItem(this.allAppliances);
     this.eraseDuplicateItem(this.allUstensils);
 
-    this.openNavigationList(button, buttonForDisplay);
+    this.openNavigationList(this.button, this.buttonForDisplay);
 
-    new NavigateInButton(this.listOfItems, this.articlesArray);
+    this.navigateInButton = new NavigateInButton(this.listOfItems, this.articlesArray);
 
-    this.closeDropDownMenuByClickingOutside(button, buttonForDisplay);
+    this.closeDropDownMenuByClickingOutside(this.button, this.buttonForDisplay);
   }
 
   eraseDuplicateItem(array) {
-    array = Array.from(new Set(this.allIngredients));
+    array = Array.from(new Set(this.allUstensils));
   }
 
   addTagsToButton(nameOfClass) {
-    recipes.forEach((recipe) => {
+    this.allIngredients = []
+    this.allAppliances = []
+    this.allUstensils = []
+    this.recipes.forEach((recipe) => {
       if (nameOfClass === "ingredients") {
         recipe.ingredients.forEach((ingredient) => {
           this.allIngredients.push(ingredient.ingredient);
@@ -88,13 +98,34 @@ class ButtonListFactory {
 
   // Trie les items des listes dans l'ordre alphabétique + les génère dans le DOM
   generateItemsListInDOM(array) {
+    
     sortByAlphabeticsOrder(array);
 
     array.forEach((item) => {
-      this.listOfItems.innerHTML += `
-      <li tabIndex = "0" class ="name-of-item" title="${item}">${item}
-      </li>`;
+      const tagUst = new TagUst(item, this.searchByTag, this.dropTag)
+      tagUst.addTocontainer(this.listOfItems) 
+      
     });
+  }
+
+  refresh (filterRecipes) {
+    this.listOfItems.innerText = ""
+    this.recipes = filterRecipes
+    this.addTagsToButton(this.nameOfClass);
+
+    this.generateItemsListInDOM(this.allIngredients);
+    this.generateItemsListInDOM(this.allAppliances);
+    this.generateItemsListInDOM(this.allUstensils);
+
+    this.eraseDuplicateItem(this.allIngredients);
+    this.eraseDuplicateItem(this.allAppliances);
+    this.eraseDuplicateItem(this.allUstensils);
+
+    this.openNavigationList(this.button, this.buttonForDisplay);
+
+    //this.navigateInButton.refresh();
+
+    this.closeDropDownMenuByClickingOutside(this.button, this.buttonForDisplay);
   }
 
   //OUVRE ET FERME LES LISTES DEROULANTES
@@ -215,11 +246,14 @@ const displayTagAboveMenuNav = (articles) => {
 
       //Lance la recherche avancée par tag au clic sur un tag
 
-      refreshRecipes(articles, restArticles, valueOfItemSelected);
+      refreshRecipes(articles,restArticles, valueOfItemSelected);
+      //displayCorrespondantTagsOnly (articles, restArticles, valueOfItemSelected);
+     // returnDisplayedArticles(articles,restArticles);
 
       // DEFINIT LA COULEUR DE L'ARRIERE-PLAN DU BOUTON DE TAG SELECTIONNE
       const getBgColorOfTagsAbove = (e, className, color) => {
-        if (e.target.parentNode.className.includes(className)) {
+        
+        if (e.target.parentNode?.className?.includes(className)) {
           buttonForTagsAbove.style.backgroundColor = color;
           arrayOfCrossCloseAbove.push(
             document.querySelector(".menuNav--buttonTagSelected__crossClose")
@@ -271,4 +305,4 @@ const closeTagAboveMenuNav = (arrayOfCrossCloseAbove) => {
   });
 };
 
-export { ButtonListFactory, displayTagAboveMenuNav, closeTagAboveMenuNav };
+export { DropDownUst, displayTagAboveMenuNav, closeTagAboveMenuNav };

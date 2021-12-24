@@ -39,9 +39,9 @@ const research = (articles, input) => {
 
   refreshRecipes(articles, restArticles, input.value);
 
-  if (restArticles.length < 1) {
+ /* if (restArticles.length < 1) {
     displayErrorMessage();
-  }
+  }*/
 };
 
 const displayErrorMessage = () => {

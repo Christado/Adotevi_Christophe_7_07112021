@@ -34,7 +34,7 @@ export class TagApp {
         this.buttonTag = document.createElement ("button")
         this.buttonTag.className= "menuNav--buttonTagSelected applianceTag"
         const p = document.createElement ("p")
-        p.innerText = this.ustensilName
+        p.innerText = this.applianceName
         const image = document.createElement("img")
         image.className = "menuNav--buttonTagSelected__crossClose"
         image.src = "./img/cross-close.svg" 

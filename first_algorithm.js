@@ -134,8 +134,8 @@ const searchByNamePredicate = (recipe,normalizedInput) => {
   }
 
   const searchByAppliancePredicate = (recipe,normalizedInput) => {
-    const applianceNames = recipe.appliances
-    return applianceNames.some(name => normalizeValues(name).includes(normalizedInput))
+    const applianceName = recipe.appliance
+    return normalizeValues(applianceName).includes(normalizedInput)
     
   }
 

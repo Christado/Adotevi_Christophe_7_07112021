@@ -33,6 +33,9 @@ class displayRecipesFactory {
     this.dropDowIng.refresh(filterRecipes);
     this.dropDownUst.refresh(filterRecipes);
     this.dropDownApp.refresh(filterRecipes);
+    if (receipesToDisplay.length === 0) {
+      this.displayErrorMessage()
+    }
   }
 
   createRecipeDOMElement(recipe, ingredientinfos, applianceAndUstensilsInfos) {
@@ -145,6 +148,14 @@ class displayRecipesFactory {
    );
 
   }
+
+  displayErrorMessage ()  {
+    this.recipesContainer.innerHTML = `
+    <main>
+    <p id = "error-message" >Oups...<i class="far fa-dizzy"></i><br>Votre recherche ne correspond à aucun résultat...Vous pouvez chercher "tarte aux pommes", "poisson", etc...</p></main>`
+  
+  };
+  
 
 }
 

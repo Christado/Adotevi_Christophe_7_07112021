@@ -1,0 +1,24 @@
+{
+  "name": "projet-7",
+  "version": "1.0.0",
+  "description": "les petits plats",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Christado/Adotevi_Christophe_7_07112021.git"
+  },
+  "author": "Christophe ADOTEVI",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Christado/Adotevi_Christophe_7_07112021/issues"
+  },
+  "homepage": "https://github.com/Christado/Adotevi_Christophe_7_07112021#readme",
+  "devDependencies": {
+    "eslint": "^8.5.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.3"
+  }
+}

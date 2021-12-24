@@ -77,10 +77,10 @@ class DropDownApp {
           this.allIngredients.push(ingredient.ingredient);
         });
       }
-      if (nameOfClass === "appliance") {
-        recipe.appliances.forEach((appliance) => {
-          this.allAppliances.push(appliance);
-        });
+      if (nameOfClass === "appliances") {
+        
+          this.allAppliances.push(recipe.appliance);
+        
         
       }
       if (nameOfClass === "ustensils") {

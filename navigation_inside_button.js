@@ -1,4 +1,11 @@
-import { normalizeValues } from "./function_normalizeValue.js";
+/* eslint-disable linebreak-style */
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-unused-vars */
+/* eslint-disable spaced-comment */
+/* eslint-disable import/extensions */
+import { normalizeValues } from './function_normalizeValue.js';
+
 class NavigateInButton {
   constructor(listOfItems, articles) {
     this.listOfItems = listOfItems;
@@ -7,41 +14,39 @@ class NavigateInButton {
     /*this.items = items;
     this.type = type;
     this.input = null;
-    this.onSearch = onSearch;*/
+    this.onSearch = onSearch; */
 
     this.inputsForSearchArray = [
-      ...document.querySelectorAll(".dropDownMenus--input_active_title"),
+      ...document.querySelectorAll('.dropDownMenus--input_active_title'),
     ];
     this.chevronArray = [
-      ...document.querySelectorAll(".dropDownMenus--input_active_chevron "),
+      ...document.querySelectorAll('.dropDownMenus--input_active_chevron '),
     ];
     this.listOfItemsArray = [...listOfItems.children];
 
+    // eslint-disable-next-line padded-blocks
     this.searchThroughItems(this.inputsForSearchArray);
 
-    
   }
 
   searchThroughItems(inputs) {
-   
-
     inputs.forEach((input) => {
-      input.addEventListener("input", (e) => {
+      input.addEventListener('input', (e) => {
         if (this.listOfItems.parentNode === input.parentNode) {
-          let valueLowCaseAndWithoutAccent = normalizeValues(input.value);
+          const valueLowCaseAndWithoutAccent = normalizeValues(input.value);
 
           this.listOfItemsArray.forEach((li) => {
             //Supprime temporairement les éléments restants de la liste des tags affinée
-            if (li.className !== "name-of-item hidden") {
-              li.classList.add("erase-temporarly");
+            if (li.className !== 'name-of-item hidden') {
+              li.classList.add('erase-temporarly');
             }
 
-            let titleLowCaseAndWithoutAccent = normalizeValues(li.title);
+            const titleLowCaseAndWithoutAccent = normalizeValues(li.title);
             //Affiche les items avec la même valeur que la saisie entrée dans l'input
             this.displayItemsWithSameValuesAsEnteredInInput(
               titleLowCaseAndWithoutAccent,
               valueLowCaseAndWithoutAccent,
-              li
+              li,
             );
           });
         }
@@ -49,15 +54,15 @@ class NavigateInButton {
     });
   }
 
- /* refresh () {
+  /* refresh () {
     this.searchThroughItems(this.inputsForSearchArray);
   }*/
 
   //Affiche les items dans la liste déroulante qui ont la même valeur que la saisie
   displayItemsWithSameValuesAsEnteredInInput(titleOfItems, valueOfInput, li) {
-    if (li.className === "name-of-item erase-temporarly") {
+    if (li.className === 'name-of-item erase-temporarly') {
       if (titleOfItems.includes(valueOfInput)) {
-        li.classList.remove("erase-temporarly");
+        li.classList.remove('erase-temporarly');
       }
     }
   }

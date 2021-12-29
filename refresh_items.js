@@ -1,74 +1,63 @@
-import { normalizeValues } from "./function_normalizeValue.js";
-import { displayRecipesFactory } from "./recipes_display.js";
-import { searchAlgo } from "./first_algorithm.js";
+/* eslint-disable linebreak-style */
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/no-cycle */
+/* eslint-disable import/extensions */
+import { normalizeValues } from './function_normalizeValue.js';
+import { displayRecipesFactory } from './recipes_display.js';
+import { searchAlgo } from './first_algorithm.js';
 
-
-
-const refreshRecipes = (articles,restArticles, input) => {
- const filtredRecipes = searchAlgo(articles, input);
- //const filtredTags = searchAlgo1(articles, input);
- //display.addRecipeToMainContainer(filtredTags);
-  //returnDisplayedArticles(restArticles, articles, items, input);
-  //refreshDropDownMenus(restArticles);
+const refreshRecipes = (articles, restArticles, input) => {
+  const filtredRecipes = searchAlgo(articles, input);
+  // const filtredTags = searchAlgo1(articles, input);
+  // display.addRecipeToMainContainer(filtredTags);
+  // returnDisplayedArticles(restArticles, articles, items, input);
+  // refreshDropDownMenus(restArticles);
 };
-
-
 const returnDisplayedArticles = (restArticles, articles) => {
   articles.forEach((article) => {
-    if (article.className !== "recipe hidden") {
+    if (article.className !== 'recipe hidden') {
       restArticles.push(article);
-    
     }
   });
 };
 
 // ACTUALISE LES DROPDOWN MENUS
 
-const refreshDropDownMenus = (restArticles) => {
-  eraseAllTags();
-  let items = [...document.querySelectorAll(".name-of-item")];
-  displayCorrespondantTagsOnly(restArticles, items);
-  eraseValuesAlreadySelected(items);
-};
-
 const eraseAllTags = () => {
-  let items = [...document.querySelectorAll(".name-of-item")];
+  const items = [...document.querySelectorAll('.name-of-item')];
   items.forEach((item) => {
-    item.classList.add("hidden");
+    item.classList.add('hidden');
   });
 };
 
 const displayCorrespondantTagsOnly = (restArticles, items) => {
   let nameOfItem;
 
-  //Refresh Tags that correspond to the recipes filters remaining
+  // Refresh Tags that correspond to the recipes filters remaining
   restArticles.forEach((article) => {
-    let infos =
-      article.firstChild.nextElementSibling.nextElementSibling.innerText;
+    let infos = article.firstChild.nextElementSibling.nextElementSibling.innerText;
     infos = normalizeValues(infos);
     items.forEach((item) => {
       nameOfItem = item.innerText;
       nameOfItem = normalizeValues(nameOfItem).trim();
       if (infos.includes(nameOfItem)) {
-        item.classList.remove("hidden");
+        item.classList.remove('hidden');
       }
     });
   });
 };
 
-
-
 const eraseValuesAlreadySelected = (items) => {
-  let selectedButtons = [
-    ...document.querySelectorAll(".menuNav--buttonTagSelected"),
+  const selectedButtons = [
+    ...document.querySelectorAll('.menuNav--buttonTagSelected'),
   ];
-  let inputValue = document.querySelector(".menuNav--searchInput").value;
+  let inputValue = document.querySelector('.menuNav--searchInput').value;
   inputValue = normalizeValues(inputValue);
   let nameOfItem;
   items.forEach((item) => {
     nameOfItem = normalizeValues(item.innerText).trim();
     if (nameOfItem === inputValue) {
-      item.classList.add("hidden");
+      item.classList.add('hidden');
     }
   });
 
@@ -79,49 +68,27 @@ const eraseValuesAlreadySelected = (items) => {
       nameOfItem = item.innerText;
       nameOfItem = normalizeValues(nameOfItem).trim();
       if (nameOfItem === buttonName) {
-        item.classList.add("hidden");
+        item.classList.add('hidden');
       }
     });
-
   });
 };
 
-const refreshElementAfterRemoveTags = (restArticles) => {
-  let articles = [...document.querySelectorAll(".recipe")];
-  let buttons = [...document.querySelectorAll(".menuNav--buttonTagSelected")];
-
-  buttons.forEach((button) => {
-    let buttonValue = normalizeValues(button.innerText);
-    articles.forEach((article) => {
-      article.classList.remove("hidden");
-    });
-  });
-
-  refreshRecipesAfterRemovingTags(articles, restArticles, buttons);
-
-  // Affiche l'intégralité des recettes si il n'y a plus de tags et que l'input est vide
-  let input = document.querySelector(".menuNav--searchInput");
-  if (buttons.length < 1 && !input.value) {
-    // Faire le comportement si l'input est vide et s'il est rempli
-    articles.forEach((article) => {
-      article.classList.remove("hidden");
-    });
-    let items = [...document.querySelectorAll(".name-of-item")];
-    items.forEach((item) => {
-      item.classList.remove("hidden");
-    });
-  }
+const refreshDropDownMenus = (restArticles) => {
+  eraseAllTags();
+  const items = [...document.querySelectorAll('.name-of-item')];
+  displayCorrespondantTagsOnly(restArticles, items);
+  eraseValuesAlreadySelected(items);
 };
 
 const refreshRecipesAfterRemovingTags = (articles, restArticles, buttons) => {
   articles.forEach((article) => {
-    let articleFooter =
-      article.firstChild.nextElementSibling.nextElementSibling;
-    let footerValuesNorm = normalizeValues(articleFooter.innerText);
+    const articleFooter = article.firstChild.nextElementSibling.nextElementSibling;
+    const footerValuesNorm = normalizeValues(articleFooter.innerText);
     buttons.forEach((button) => {
-      let buttonValueNorm = normalizeValues(button.innerText);
+      const buttonValueNorm = normalizeValues(button.innerText);
       if (!footerValuesNorm.includes(buttonValueNorm)) {
-        article.classList.add("hidden");
+        article.classList.add('hidden');
       }
     });
   });
@@ -129,15 +96,41 @@ const refreshRecipesAfterRemovingTags = (articles, restArticles, buttons) => {
   refreshDropDownMenus(restArticles);
 };
 
+const refreshElementAfterRemoveTags = (restArticles) => {
+  const articles = [...document.querySelectorAll('.recipe')];
+  const buttons = [...document.querySelectorAll('.menuNav--buttonTagSelected')];
+
+  buttons.forEach((button) => {
+    const buttonValue = normalizeValues(button.innerText);
+    articles.forEach((article) => {
+      article.classList.remove('hidden');
+    });
+  });
+
+  refreshRecipesAfterRemovingTags(articles, restArticles, buttons);
+
+  // Affiche l'intégralité des recettes si il n'y a plus de tags et que l'input est vide
+  const input = document.querySelector('.menuNav--searchInput');
+  if (buttons.length < 1 && !input.value) {
+    // Faire le comportement si l'input est vide et s'il est rempli
+    articles.forEach((article) => {
+      article.classList.remove('hidden');
+    });
+    const items = [...document.querySelectorAll('.name-of-item')];
+    items.forEach((item) => {
+      item.classList.remove('hidden');
+    });
+  }
+};
+
 const searchAlgo1 = (articles, input) => {
   articles.forEach((article) => {
-    let articleFooter =
-      article.firstChild.nextElementSibling.nextElementSibling;
-    let footerValuesNorm = normalizeValues(articleFooter.innerText);
-    let inputValueNorm = normalizeValues(input);
-     console.log(footerValuesNorm);
+    const articleFooter = article.firstChild.nextElementSibling.nextElementSibling;
+    const footerValuesNorm = normalizeValues(articleFooter.innerText);
+    const inputValueNorm = normalizeValues(input);
+    console.log(footerValuesNorm);
     if (!footerValuesNorm.includes(inputValueNorm)) {
-      article.classList.add("hidden");
+      article.classList.add('hidden');
     }
   });
 };
@@ -149,5 +142,5 @@ export {
   refreshDropDownMenus,
   refreshRecipesAfterRemovingTags,
   displayCorrespondantTagsOnly,
-  //searchAlgo1,
+  // searchAlgo1,
 };

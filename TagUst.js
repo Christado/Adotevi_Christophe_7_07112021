@@ -1,61 +1,68 @@
-import { addTag, removeTag } from "./tag.js"
+/* eslint-disable linebreak-style */
+/* eslint-disable no-use-before-define */
+/* eslint-disable new-cap */
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable curly */
+/* eslint-disable prefer-const */
+/* eslint-disable arrow-parens */
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/no-cycle */
+/* eslint-disable import/extensions */
 
+import { addTag, removeTag } from './tag.js';
 
 export class TagUst {
+  constructor(
+    ustensilName,
+    searchByTag,
+    dropTag,
+  ) {
+    this.ustensilName = ustensilName;
+    this.searchByTag = searchByTag;
+    this.dropTag = dropTag;
+    this.createNode();
+  }
 
-    constructor (
-        ustensilName,
-        searchByTag,
-        dropTag
-    ) {
-        this.ustensilName = ustensilName
-        this.searchByTag = searchByTag
-        this.dropTag = dropTag
-        this.createNode()
-    }
-    createNode () {
-        this.content = document.createElement('li')
-        this.content.tabIndex = 0
-        this.content.className = 'name-of-item'
-        this.content.title = this.ustensilName
-        this.content.innerText = this.ustensilName
-        this.content.addEventListener('click', () => this.onClick())
-    }
+  createNode() {
+    this.content = document.createElement('li');
+    this.content.tabIndex = 0;
+    this.content.className = 'name-of-item';
+    this.content.title = this.ustensilName;
+    this.content.innerText = this.ustensilName;
+    this.content.addEventListener('click', () => this.onClick());
+  }
 
-    onClick () {
-        const tag = this.getTagTemplate()
-        addTag(tag)
-        this.searchByTag (this.ustensilName, 'ustensil')
-        console.log (this.ustensilName)
-    }
+  onClick() {
+    const tag = this.getTagTemplate();
+    addTag(tag);
+    this.searchByTag(this.ustensilName, 'ustensil');
+    console.log(this.ustensilName);
+  }
 
-    getTagTemplate() {
+  getTagTemplate() {
+    this.buttonTag = document.createElement('button');
+    this.buttonTag.className = 'menuNav--buttonTagSelected ustensilTag';
+    const p = document.createElement('p');
+    p.innerText = this.ustensilName;
+    const image = document.createElement('img');
+    image.className = 'menuNav--buttonTagSelected__crossClose';
+    image.src = './img/cross-close.svg';
+    image.alt = 'supprimer le tags';
+    this.buttonTag.append(p, image);
+    this.buttonTag.addEventListener('click', (e) => this.onTagRemove(e));
+    image.addEventListener('click', (e) => this.onTagRemove(e));
+    return this.buttonTag;
+  }
 
-        this.buttonTag = document.createElement ("button")
-        this.buttonTag.className= "menuNav--buttonTagSelected ustensilTag"
-        const p = document.createElement ("p")
-        p.innerText = this.ustensilName
-        const image = document.createElement("img")
-        image.className = "menuNav--buttonTagSelected__crossClose"
-        image.src = "./img/cross-close.svg" 
-        image.alt = "supprimer le tags"
-        this.buttonTag.append(p,image)
-        this.buttonTag.addEventListener('click',(e) => this.onTagRemove(e))
-        image.addEventListener('click', (e) => this.onTagRemove (e) )
-        return this.buttonTag
-    }
+  onTagRemove(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log(`${this.ustensilName}doit etre supprimé`);
+    removeTag(this.buttonTag);
+    this.dropTag(this.ustensilName, 'ustensil');
+  }
 
-    onTagRemove(e) {
-        e.preventDefault ()
-        e.stopPropagation()
-        console.log(this.ustensilName + "doit etre supprimé")
-        removeTag(this.buttonTag)
-        this.dropTag(this.ustensilName, 'ustensil')
-    }
-
-    addTocontainer(container) {
-
-        container.appendChild(this.content)
-    }
-
+  addTocontainer(container) {
+    container.appendChild(this.content);
+  }
 }

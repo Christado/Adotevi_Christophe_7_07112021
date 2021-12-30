@@ -122,9 +122,18 @@ const searchByNamePredicate = (recipe,normalizedInput) => {
   }
   
   const searchByIngredientPredicate = (recipe,normalizedInput) => {
-    const ingredientNames = recipe.ingredients.map(item => item.ingredient)
-    return ingredientNames.some(name => normalizeValues(name).includes(normalizedInput))
-    
+    /*const ingredientNames = recipe.ingredients.map(item => item.ingredient)
+    return ingredientNames.some(name => normalizeValues(name).includes(normalizedInput))*/
+
+    let existe = false
+    for (const ingredient of recipe.ingredients) {
+      const ingredientName = ingredient.ingredient
+      if (normalizeValues(ingredientName).includes(normalizedInput)) {
+        existe = true
+      }
+      
+    }
+    return existe
   }
 
   const searchByUstensilPredicate = (recipe,normalizedInput) => {
@@ -142,12 +151,21 @@ const searchByNamePredicate = (recipe,normalizedInput) => {
   const procesSearch = (inputNorm) => {
     if (! inputNorm)
     return recipes
-    return recipes.filter((recipe)=>{
+    /*return recipes.filter((recipe)=>{
      
       return searchByNamePredicate(recipe,inputNorm) || searchByDescriptionPredicate(recipe,inputNorm) || searchByIngredientPredicate(recipe,inputNorm);
-     })
+     })*/
+      let result = []
+     for (const recipe of recipes) {
 
-  }
+      if (searchByNamePredicate(recipe, inputNorm ) || searchByDescriptionPredicate(recipe, inputNorm) || searchByIngredientPredicate(recipe, inputNorm)) {
+        result.push(recipe)
+      }
+       
+     }
+     return result
+    
+    }
   const searchAlgo = (articles, input) => {
     const inputValueNorm = normalizeValues(input)
     textInput = inputValueNorm

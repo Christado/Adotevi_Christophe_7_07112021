@@ -138,6 +138,7 @@ class DropDownUst {
     // this.navigateInButton.refresh();
 
     this.closeDropDownMenuByClickingOutside(this.button, this.buttonForDisplay);
+    this.navigateInButton = new NavigateInButton(this.listOfItems, this.articlesArray);
   }
 
   // OUVRE ET FERME LES LISTES DEROULANTES

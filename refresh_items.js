@@ -3,7 +3,6 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable import/extensions */
 import { normalizeValues } from './function_normalizeValue.js';
-import { displayRecipesFactory } from './recipes_display.js';
 import { searchAlgo } from './first_algorithm.js';
 
 const refreshRecipes = (articles, restArticles, input) => {

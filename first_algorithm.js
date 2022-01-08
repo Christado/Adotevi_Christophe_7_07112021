@@ -1,19 +1,13 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable no-use-before-define */
-/* eslint-disable new-cap */
-/* eslint-disable import/prefer-default-export */
-/* eslint-disable curly */
-/* eslint-disable prefer-const */
-/* eslint-disable arrow-parens */
-/* eslint-disable no-unused-vars */
-/* eslint-disable import/no-cycle */
 /* eslint-disable import/extensions */
+/* eslint-disable import/prefer-default-export */
 
 import { normalizeValues } from './function_normalizeValue.js';
 import { recipes } from './JS/datas.js';
-import { displayRecipesFactory } from './recipes_display.js';
+// eslint-disable-next-line import/no-cycle
+import { DisplayRecipesFactory } from './recipes_display.js';
 // import { ButtonListFactory } from "./dropDownApp.js";
-import { DropDowIng } from './dropDownIng.js';
+// import { DropDowIng } from './dropDownIng.js';
+const display = new DisplayRecipesFactory();
 
 let textInput = '';
 let selectedIngredient = [];
@@ -23,25 +17,6 @@ let filterRecipes = recipes;
 
 // ALGO DE RECHERCHE 1
 // Différentes listes des dropDownMenus
-let listOfIngredients = document.querySelector(
-  '.dropDownMenus--input_active_list_ing',
-);
-let listOfAppliance = document.querySelector(
-  '.dropDownMenus--input_active_list_appliance',
-);
-let listOfUstensils = document.querySelector(
-  '.dropDownMenus--input_active_list_ustensils',
-);
-
-// Boutons Inactifs
-let buttonIngredients = document.querySelector('#container-1_inactive');
-let buttonAppliance = document.querySelector('#container-2_inactive');
-let buttonUstensils = document.querySelector('#container-3_inactive');
-
-// Boutons Actifs (déployés)
-let buttonIngredientExpanded = document.querySelector('#container-1_active');
-let buttonApplianceExpanded = document.querySelector('#container-2_active');
-let buttonUstensilsExpanded = document.querySelector('#container-3_active');
 
 const searchByNamePredicate = (recipe, normalizedInput) => {
   const normalizedName = normalizeValues(recipe.name);
@@ -54,13 +29,13 @@ const searchByDescriptionPredicate = (recipe, normalizedInput) => {
 };
 
 const searchByIngredientPredicate = (recipe, normalizedInput) => {
-  const ingredientNames = recipe.ingredients.map(item => item.ingredient);
-  return ingredientNames.some(name => normalizeValues(name).includes(normalizedInput));
+  const ingredientNames = recipe.ingredients.map((item) => item.ingredient);
+  return ingredientNames.some((name) => normalizeValues(name).includes(normalizedInput));
 };
 
 const searchByUstensilPredicate = (recipe, normalizedInput) => {
   const ustensilNames = recipe.ustensils;
-  return ustensilNames.some(name => normalizeValues(name).includes(normalizedInput));
+  return ustensilNames.some((name) => normalizeValues(name).includes(normalizedInput));
 };
 
 const searchByAppliancePredicate = (recipe, normalizedInput) => {
@@ -70,8 +45,10 @@ const searchByAppliancePredicate = (recipe, normalizedInput) => {
 
 const procesSearch = (inputNorm) => {
   if (!inputNorm) return recipes;
-  // eslint-disable-next-line max-len
-  return recipes.filter((recipe) => searchByNamePredicate(recipe, inputNorm) || searchByDescriptionPredicate(recipe, inputNorm) || searchByIngredientPredicate(recipe, inputNorm));
+
+  return recipes.filter((recipe) => searchByNamePredicate(recipe, inputNorm)
+  || searchByDescriptionPredicate(recipe, inputNorm)
+   || searchByIngredientPredicate(recipe, inputNorm));
 };
 
 const searchByTag = (tagName, type) => {
@@ -95,7 +72,7 @@ const searchByTag = (tagName, type) => {
 
 const searchByAllIngredient = () => {
   console.log(selectedIngredient);
-  selectedIngredient.forEach(ingredient => {
+  selectedIngredient.forEach((ingredient) => {
     const input = normalizeValues(ingredient);
     filterRecipes = filterRecipes.filter((recipe) => searchByIngredientPredicate(recipe, input));
   });
@@ -103,7 +80,7 @@ const searchByAllIngredient = () => {
 
 const searchByAllUstensil = () => {
   console.log(selectedUstensil);
-  selectedUstensil.forEach(ustensil => {
+  selectedUstensil.forEach((ustensil) => {
     const input = normalizeValues(ustensil);
     filterRecipes = filterRecipes.filter((recipe) => searchByUstensilPredicate(recipe, input));
   });
@@ -111,7 +88,7 @@ const searchByAllUstensil = () => {
 
 const searchByAllAppliance = () => {
   console.log(selectedAppli);
-  selectedAppli.forEach(appliance => {
+  selectedAppli.forEach((appliance) => {
     const input = normalizeValues(appliance);
     filterRecipes = filterRecipes.filter((recipe) => searchByAppliancePredicate(recipe, input));
   });
@@ -121,15 +98,15 @@ const removeTag = (tagName, type) => {
   console.log('suppresion du tag');
   console.log(tagName);
   if (type === 'ingredient') {
-    selectedIngredient = selectedIngredient.filter(ingredient => ingredient !== tagName);
+    selectedIngredient = selectedIngredient.filter((ingredient) => ingredient !== tagName);
   }
 
   if (type === 'ustensil') {
-    selectedUstensil = selectedUstensil.filter(ustensil => ustensil !== tagName);
+    selectedUstensil = selectedUstensil.filter((ustensil) => ustensil !== tagName);
   }
 
   if (type === 'appliance') {
-    selectedAppli = selectedAppli.filter(appliance => appliance !== tagName);
+    selectedAppli = selectedAppli.filter((appliance) => appliance !== tagName);
   }
 
   filterRecipes = procesSearch(textInput);
@@ -147,8 +124,9 @@ const searchAlgo = (articles, input) => {
   // refrshDropDown(filterRecipes);
 };
 
-const display = new displayRecipesFactory(searchByTag, removeTag);
-
+display.searchByTag = searchByTag;
+display.dropTag = removeTag;
+display.init();
 export {
   searchAlgo,
 };

@@ -5,7 +5,7 @@
 /* eslint-disable import/extensions */
 import { CreateSearchBarFactory } from './main_searchbar.js';
 import { displayTagAboveMenuNav } from './dropDownApp.js';
-import { displayRecipesFactory } from './recipes_display.js';
+
 import { recipes } from './JS/datas.js';
 import { DropDowIng } from './dropDownIng.js';
 

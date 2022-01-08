@@ -11,15 +11,19 @@ import { DropDowIng } from './dropDownIng.js';
 import { DropDownUst } from './dropDownUst.js';
 import { DropDownApp } from './dropDownApp.js';
 
-class displayRecipesFactory {
-  constructor(searchByTag, dropTag) {
-    this.searchByTag = searchByTag;
-    this.dropTag = dropTag;
+class DisplayRecipesFactory {
+  searchByTag = null;
+
+  dropTag = null;
+
+  constructor() {
+    //this.searchByTag = searchByTag;
+    //this.dropTag = dropTag;
     this.recipesContainer = document.querySelector('#recipes-container');
-    this.init();
+    /*this.init();
     this.initIngredient();
     this.initUstensil();
-    this.initAppliance();
+    this.initAppliance();*/
   }
 
   init() {
@@ -27,6 +31,9 @@ class displayRecipesFactory {
     recipes.forEach((recipe) => {
       this.addUlDOMElements(recipe);
     });
+    this.initIngredient();
+    this.initUstensil();
+    this.initAppliance();
   }
 
   addRecipeToMainContainer(filterRecipes) {
@@ -136,4 +143,4 @@ class displayRecipesFactory {
   }
 }
 
-export { displayRecipesFactory };
+export { DisplayRecipesFactory };

@@ -25,7 +25,7 @@ import {
   refreshElementAfterRemoveTags,
   returnDisplayedArticles,
   refreshDropDownMenus,
-  displayCorrespondantTagsOnly,
+
 } from './refresh_items.js';
 import { TagIng } from './TagIng.js';
 

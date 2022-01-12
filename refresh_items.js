@@ -1,5 +1,5 @@
 import { normalizeValues } from "./function_normalizeValue.js";
-import { displayRecipesFactory } from "./recipes_display.js";
+import { DisplayRecipesFactory } from "./recipes_display.js";
 import { searchAlgo } from "./first_algorithm.js";
 
 

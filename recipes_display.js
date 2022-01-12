@@ -3,7 +3,7 @@ import { DropDowIng } from "./dropDownIng.js";
 import { DropDownUst } from "./dropDownUst.js";
 import { DropDownApp } from "./dropDownApp.js";
 
-class displayRecipesFactory {
+class DisplayRecipesFactory {
   constructor(searchByTag, dropTag) 
   
   
@@ -159,4 +159,4 @@ class displayRecipesFactory {
 
 }
 
-export { displayRecipesFactory };
+export { DisplayRecipesFactory };

@@ -1,41 +1,35 @@
-import { CreateSearchBarFactory } from "./main_searchbar.js";
-import { displayTagAboveMenuNav } from "./dropDownApp.js";
-//import { displayRecipesFactory } from "./recipes_display.js";
-import { recipes } from "./JS/datas.js";
-import { DropDowIng } from "./dropDownIng.js";
+/* eslint-disable no-undef */
+/* eslint-disable no-new */
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-use-before-define */
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable max-len */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable import/no-cycle */
+/* eslint-disable import/extensions */
 
+import { CreateSearchBarFactory } from './main_searchbar.js';
+// import { displayTagAboveMenuNav } from './dropDownApp.js';
+// import { displayRecipesFactory } from "./recipes_display.js";
+// import { recipes } from './JS/datas.js';
+// import { DropDowIng } from './dropDownIng.js';
 
-//Génère les Recettes dans le DOM
-//new displayRecipesFactory();
+// Génère les Recettes dans le DOM
+// new displayRecipesFactory();
 
 // Variable Tableau qui contient toutes les recettes générées du DOM
-let articlesArray = [...document.querySelectorAll(".recipe")];
+const articlesArray = [...document.querySelectorAll('.recipe')];
 
-//Crée le comportement de l'input de recherche
+// Crée le comportement de l'input de recherche
 new CreateSearchBarFactory(articlesArray);
 
-//Différentes listes des dropDownMenus
-let listOfIngredients = document.querySelector(
-  ".dropDownMenus--input_active_list_ing"
-);
-let listOfAppliance = document.querySelector(
-  ".dropDownMenus--input_active_list_appliance"
-);
-let listOfUstensils = document.querySelector(
-  ".dropDownMenus--input_active_list_ustensils"
-);
+// Différentes listes des dropDownMenus
 
 // Boutons Inactifs
-let buttonIngredients = document.querySelector("#container-1_inactive");
-let buttonAppliance = document.querySelector("#container-2_inactive");
-let buttonUstensils = document.querySelector("#container-3_inactive");
 
 // Boutons Actifs (déployés)
-let buttonIngredientExpanded = document.querySelector("#container-1_active");
-let buttonApplianceExpanded = document.querySelector("#container-2_active");
-let buttonUstensilsExpanded = document.querySelector("#container-3_active");
 
-/*new DropDowIng(
+/* new DropDowIng(
   "ingredient",
   buttonIngredients,
   listOfIngredients,
@@ -43,9 +37,9 @@ let buttonUstensilsExpanded = document.querySelector("#container-3_active");
   buttonIngredientExpanded,
   "container-1_active",
    recipes
-);*/
+); */
 
-/*new ButtonListFactory(
+/* new ButtonListFactory(
   "appliances",
   buttonAppliance,
   listOfAppliance,
@@ -63,6 +57,6 @@ new ButtonListFactory(
   buttonUstensilsExpanded,
   "container-3_active",
   recipes
-);*/
+); */
 
-//displayTagAboveMenuNav(articlesArray);
+// displayTagAboveMenuNav(articlesArray);

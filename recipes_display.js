@@ -1,16 +1,23 @@
-import { recipes } from "./JS/datas.js";
-import { DropDowIng } from "./dropDownIng.js";
-import { DropDownUst } from "./dropDownUst.js";
-import { DropDownApp } from "./dropDownApp.js";
+/* eslint-disable no-undef */
+/* eslint-disable no-new */
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-use-before-define */
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable max-len */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable import/no-cycle */
+/* eslint-disable import/extensions */
+
+import { recipes } from './JS/datas.js';
+import { DropDowIng } from './dropDownIng.js';
+import { DropDownUst } from './dropDownUst.js';
+import { DropDownApp } from './dropDownApp.js';
 
 class DisplayRecipesFactory {
-  constructor(searchByTag, dropTag) 
-  
-  
-  {
+  constructor(searchByTag, dropTag) {
     this.searchByTag = searchByTag;
     this.dropTag = dropTag;
-    this.recipesContainer = document.querySelector("#recipes-container");
+    this.recipesContainer = document.querySelector('#recipes-container');
     this.init();
     this.initIngredient();
     this.initUstensil();
@@ -18,15 +25,15 @@ class DisplayRecipesFactory {
   }
 
   init() {
-    this.recipesContainer.innerText = ""
+    this.recipesContainer.innerText = '';
     recipes.forEach((recipe) => {
       this.addUlDOMElements(recipe);
     });
   }
 
   addRecipeToMainContainer(filterRecipes) {
-    this.recipesContainer.innerText = ""
-    const receipesToDisplay = filterRecipes || recipes
+    this.recipesContainer.innerText = '';
+    const receipesToDisplay = filterRecipes || recipes;
     receipesToDisplay.forEach((recipe) => {
       this.addUlDOMElements(recipe);
     });
@@ -34,13 +41,13 @@ class DisplayRecipesFactory {
     this.dropDownUst.refresh(filterRecipes);
     this.dropDownApp.refresh(filterRecipes);
     if (receipesToDisplay.length === 0) {
-      this.displayErrorMessage()
+      this.displayErrorMessage();
     }
   }
 
-  createRecipeDOMElement(recipe, ingredientinfos, applianceAndUstensilsInfos) {
+  createRecipeDOMElement(recipe, ingredientinfos) {
     this.recipesContainer.insertAdjacentHTML(
-      "afterbegin",
+      'afterbegin',
       `
         <article class="recipe">
                
@@ -58,12 +65,12 @@ class DisplayRecipesFactory {
                   </div>
               </footer>
           </article>
-        `
+        `,
     );
   }
 
   addUlDOMElements(recipe) {
-    let ingredientinfos = "";
+    let ingredientinfos = '';
 
     recipe.ingredients.forEach((ingredient) => {
       if (ingredient.quantity) {
@@ -80,83 +87,55 @@ class DisplayRecipesFactory {
     return this.createRecipeDOMElement(recipe, ingredientinfos);
   }
 
-   refrshDropDown = (filterRecipes) => {
-
-    listOfIngredients.innerText = ""
-    listOfUstensils.innerText = ""
-    listOfAppliance.innerText = ""
+  refrshDropDown = (filterRecipes) => {
+    listOfIngredients.innerText = '';
+    listOfUstensils.innerText = '';
+    listOfAppliance.innerText = '';
     new DropDowIng(
-      "ingredient",
+      'ingredient',
       buttonIngredients,
       listOfIngredients,
-      "ingredients",
+      'ingredients',
       buttonIngredientExpanded,
-      "container-1_active",
-       filterRecipes,
-       searchByTag
-    
-    );
-    
-    /*new DropDownApp(
-      "appliance",
-      buttonAppliance,
-      listOfAppliance,
-      "appliances",
-      buttonApplianceExpanded,
-      "container-2_active",
+      'container-1_active',
       filterRecipes,
-      searchByTag
-    );*/
-    
-   /* new DropDownUst(
-      "ustensil",
-      buttonUstensils,
-      listOfUstensils,
-      "ustensils",
-      buttonUstensilsExpanded,
-      "container-3_active",
-      filterRecipes,
-      searchByTag
-    );*/
-  }
+      searchByTag,
 
-  initIngredient () {
+    );
+  };
+
+  initIngredient() {
     this.dropDowIng = new DropDowIng(
-       recipes,
-       this.searchByTag,
-       this.dropTag,
-    
+      recipes,
+      this.searchByTag,
+      this.dropTag,
+
     );
   }
 
-  initUstensil () {
+  initUstensil() {
     this.dropDownUst = new DropDownUst(
       recipes,
       this.searchByTag,
       this.dropTag,
-   
-   );
+
+    );
   }
 
-  initAppliance () {
+  initAppliance() {
     this.dropDownApp = new DropDownApp(
       recipes,
       this.searchByTag,
       this.dropTag,
-      
-   
-   );
 
+    );
   }
 
-  displayErrorMessage ()  {
+  displayErrorMessage() {
     this.recipesContainer.innerHTML = `
     <main>
-    <p id = "error-message" >Oups...<i class="far fa-dizzy"></i><br>Votre recherche ne correspond à aucun résultat...Vous pouvez chercher "tarte aux pommes", "poisson", etc...</p></main>`
-  
-  };
-  
-
+    <p id = "error-message" >Oups...<i class="far fa-dizzy"></i><br>Votre recherche ne correspond à aucun résultat...Vous pouvez chercher "tarte aux pommes", "poisson", etc...</p></main>`;
+  }
 }
 
 export { DisplayRecipesFactory };

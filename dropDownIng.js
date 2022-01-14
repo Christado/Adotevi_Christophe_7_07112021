@@ -1,9 +1,20 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-undef */
+/* eslint-disable no-new */
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-use-before-define */
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable max-len */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable import/no-cycle */
+/* eslint-disable import/extensions */
 import {
   normalizeValues,
   sortByAlphabeticsOrder,
-} from "./function_normalizeValue.js";
-//import { recipes } from "./JS/datas.js";
-import { NavigateInButton } from "./navigation_inside_button.js";
+} from './function_normalizeValue.js';
+// import { recipes } from "./JS/datas.js";
+import { NavigateInButton } from './navigation_inside_button.js';
 
 import {
   refreshRecipes,
@@ -11,37 +22,36 @@ import {
   returnDisplayedArticles,
   refreshDropDownMenus,
   displayCorrespondantTagsOnly,
-} from "./refresh_items.js";
-import { TagIng } from "./TagIng.js";
+} from './refresh_items.js';
+import { TagIng } from './TagIng.js';
 
 // Génère les élements de type TAGS dans les listes déroulantes
 class DropDowIng {
   constructor(
-  
-    
+
     recipes,
     searchByTag,
-    dropTag
+    dropTag,
   ) {
     this.name = 'ingredient';
-    this.button = document.querySelector("#container-1_inactive");
+    this.button = document.querySelector('#container-1_inactive');
     this.listOfItems = document.querySelector(
-      ".dropDownMenus--input_active_list_ing"
+      '.dropDownMenus--input_active_list_ing',
     );
     this.nameOfClass = 'ingredients';
-    this.buttonForDisplay = document.querySelector("#container-1_active");
+    this.buttonForDisplay = document.querySelector('#container-1_active');
     this.crossCloseButton = [];
     this.allIngredients = [];
     this.allAppliances = [];
     this.allUstensils = [];
     this.arrayOfChevronUp = [];
-    this.inactiveContainerID = "container-1_active";
-    this.recipes = recipes
-    this.searchByTag = searchByTag
-    this.dropTag = dropTag
+    this.inactiveContainerID = 'container-1_active';
+    this.recipes = recipes;
+    this.searchByTag = searchByTag;
+    this.dropTag = dropTag;
 
-    this.articlesArray = [...document.querySelectorAll(".recipe")];
-    //METHODES APPELEES
+    this.articlesArray = [...document.querySelectorAll('.recipe')];
+    // METHODES APPELEES
 
     this.addTagsToButton(this.nameOfClass);
 
@@ -65,19 +75,19 @@ class DropDowIng {
   }
 
   addTagsToButton(nameOfClass) {
-    this.allIngredients = []
-    this.allAppliances = []
-    this.allUstensils = []
+    this.allIngredients = [];
+    this.allAppliances = [];
+    this.allUstensils = [];
     this.recipes.forEach((recipe) => {
-      if (nameOfClass === "ingredients") {
+      if (nameOfClass === 'ingredients') {
         recipe.ingredients.forEach((ingredient) => {
           this.allIngredients.push(ingredient.ingredient);
         });
       }
-      if (nameOfClass === "appliances") {
+      if (nameOfClass === 'appliances') {
         this.allAppliances.push(recipe.appliance);
       }
-      if (nameOfClass === "ustensils") {
+      if (nameOfClass === 'ustensils') {
         recipe.ustensils.forEach((ustensil) => {
           this.allUstensils.push(ustensil);
         });
@@ -97,19 +107,17 @@ class DropDowIng {
 
   // Trie les items des listes dans l'ordre alphabétique + les génère dans le DOM
   generateItemsListInDOM(array) {
-    
     sortByAlphabeticsOrder(array);
 
     array.forEach((item) => {
-      const tagIng = new TagIng(item, this.searchByTag, this.dropTag)
-      tagIng.addTocontainer(this.listOfItems) 
-      
+      const tagIng = new TagIng(item, this.searchByTag, this.dropTag);
+      tagIng.addTocontainer(this.listOfItems);
     });
   }
 
-  refresh (filterRecipes) {
-    this.listOfItems.innerText = ""
-    this.recipes = filterRecipes
+  refresh(filterRecipes) {
+    this.listOfItems.innerText = '';
+    this.recipes = filterRecipes;
     this.addTagsToButton(this.nameOfClass);
 
     this.generateItemsListInDOM(this.allIngredients);
@@ -122,13 +130,13 @@ class DropDowIng {
 
     this.openNavigationList(this.button, this.buttonForDisplay);
 
-    //this.navigateInButton.refresh();
+    // this.navigateInButton.refresh();
 
     this.closeDropDownMenuByClickingOutside(this.button, this.buttonForDisplay);
     this.navigateInButton = new NavigateInButton(this.listOfItems, this.articlesArray);
   }
 
-  /*refreshItems (ingredients) {
+  /* refreshItems (ingredients) {
     this.allIngredients = ingredients
     this.eraseDuplicateItem(this.allIngredients);
     this.eraseDuplicateItem(this.allAppliances);
@@ -140,88 +148,86 @@ class DropDowIng {
 
     this.closeDropDownMenuByClickingOutside(this.button, this.buttonForDisplay);
 
-  }*/
+  } */
 
-  //OUVRE ET FERME LES LISTES DEROULANTES
+  // OUVRE ET FERME LES LISTES DEROULANTES
   openNavigationList(buttonInactive, buttonActive) {
-    buttonInactive.addEventListener("click", (e) => {
-      //Supprime la classe 'Erase Temporarly' à l'ouverture du menu déroulant pou afficher le reste des tags disponibles
-      let listOfItems = [...document.querySelectorAll(".name-of-item")];
+    buttonInactive.addEventListener('click', (e) => {
+      // Supprime la classe 'Erase Temporarly' à l'ouverture du menu déroulant pou afficher le reste des tags disponibles
+      const listOfItems = [...document.querySelectorAll('.name-of-item')];
       listOfItems.forEach((li) => {
-        if (li.className == "name-of-item erase-temporarly") {
-          li.classList.remove("erase-temporarly");
+        if (li.className === 'name-of-item erase-temporarly') {
+          li.classList.remove('erase-temporarly');
         }
       });
 
-      //Comportement des boutons au clic
-      buttonInactive.style.display = "none";
-      buttonActive.style.display = "block";
-      buttonActive.firstChild.nextElementSibling.focus(); // FOCUS SUR L'INPUT / 
+      // Comportement des boutons au clic
+      buttonInactive.style.display = 'none';
+      buttonActive.style.display = 'block';
+      buttonActive.firstChild.nextElementSibling.focus(); // FOCUS SUR L'INPUT /
       const closeActiveInputByChevron = (containerId, chevronId) => {
         if (buttonActive.id === containerId) {
-          document.querySelector(chevronId).addEventListener("click", (e) => {
-            buttonActive.style.display = "none";
-            buttonInactive.style.display = "block";
+          document.querySelector(chevronId).addEventListener('click', () => {
+            buttonActive.style.display = 'none';
+            buttonInactive.style.display = 'block';
           });
         }
       };
 
       this.createMessageIfNoItemsRemainings();
 
-      closeActiveInputByChevron("container-1_active", "#chevron-up-ingredient");
-      closeActiveInputByChevron("container-2_active", "#chevron-up-appliance");
-      closeActiveInputByChevron("container-3_active", "#chevron-up-ustensils");
+      closeActiveInputByChevron('container-1_active', '#chevron-up-ingredient');
+      closeActiveInputByChevron('container-2_active', '#chevron-up-appliance');
+      closeActiveInputByChevron('container-3_active', '#chevron-up-ustensils');
     });
   }
 
-  //Crée un message dans le dropDownMenu lorsqu'il est vide
+  // Crée un message dans le dropDownMenu lorsqu'il est vide
   createMessageIfNoItemsRemainings() {
-    let menus = [
-      ...document.querySelectorAll(".dropDownMenus--input_active_list"),
+    const menus = [
+      ...document.querySelectorAll('.dropDownMenus--input_active_list'),
     ];
 
     menus.forEach((menu) => {
-      let endMessage = menu.querySelector(".end-message");
+      const endMessage = menu.querySelector('.end-message');
       this.createMessageForEachDropdownMenus(menu, endMessage);
     });
   }
 
-  //Crée le message dans le DOM et le supprime si le dropdown est re rempli avec des items
+  // Crée le message dans le DOM et le supprime si le dropdown est re rempli avec des items
   createMessageForEachDropdownMenus(menu, endMessage) {
     if (endMessage) {
       endMessage.remove();
     }
-    let itemsClassNames = [];
+    const itemsClassNames = [];
 
-    let itemArray = [...menu.querySelectorAll("li")];
+    const itemArray = [...menu.querySelectorAll('li')];
 
     itemArray.forEach((item) => {
       itemsClassNames.push(item.className);
     });
-    let itemIsHidden = (className) => className === "name-of-item hidden";
-    let allitemsAreHidden = itemsClassNames.every(itemIsHidden);
+    const itemIsHidden = (className) => className === 'name-of-item hidden';
+    const allitemsAreHidden = itemsClassNames.every(itemIsHidden);
 
     if (allitemsAreHidden) {
       menu.insertAdjacentHTML(
-        "afterbegin",
+        'afterbegin',
         `
-      <p class = 'end-message'>Il n'y a plus rien à selectionner dans cette section </p>`
+      <p class = 'end-message'>Il n'y a plus rien à selectionner dans cette section </p>`,
       );
-    } else {
-      if (endMessage) {
-        endMessage.remove();
-      }
+    } else if (endMessage) {
+      endMessage.remove();
     }
   }
 
   closeDropDownMenuByClickingOutside(buttonInactive, buttonActive) {
-    document.addEventListener("click", (e) => {
+    document.addEventListener('click', (e) => {
       if (
-        e.target.parentNode !== buttonActive &&
-        e.target.parentNode !== buttonInactive
+        e.target.parentNode !== buttonActive
+        && e.target.parentNode !== buttonInactive
       ) {
-        buttonActive.style.display = "none";
-        buttonInactive.style.display = "block";
+        buttonActive.style.display = 'none';
+        buttonInactive.style.display = 'block';
       }
     });
   }
@@ -230,54 +236,52 @@ class DropDowIng {
 // AFFICHE LES TAGS SELECTIONNES AU DESSUS DES BOUTONS
 
 const displayTagAboveMenuNav = (articles) => {
-  let arrayOfCrossCloseAbove = [];
-  let tagSelectedContainer = document.querySelector(
-    ".menuNav--buttons-selected-container"
+  const arrayOfCrossCloseAbove = [];
+  const tagSelectedContainer = document.querySelector(
+    '.menuNav--buttons-selected-container',
   );
-  let arrayOfItems = [...document.querySelectorAll(".name-of-item")];
+  const arrayOfItems = [...document.querySelectorAll('.name-of-item')];
   arrayOfItems.forEach((item) => {
-    item.addEventListener("click", (e) => {
-      let parentContainerOfTarget = e.target.parentNode.parentNode;
-      let inputAboveTarget =
-        parentContainerOfTarget.firstChild.nextElementSibling;
+    item.addEventListener('click', (e) => {
+      const parentContainerOfTarget = e.target.parentNode.parentNode;
+      const inputAboveTarget = parentContainerOfTarget.firstChild.nextElementSibling;
       e.preventDefault();
       tagSelectedContainer.insertAdjacentHTML(
-        "afterbegin",
+        'afterbegin',
         `
               <button class="menuNav--buttonTagSelected"> <p>${e.target.innerHTML}</p> <img class="menuNav--buttonTagSelected__crossClose" src="./img/cross-close.svg" alt="supprimer le tags">
-          </button>`
+          </button>`,
       );
-      let buttonForTagsAbove = document.querySelector(
-        ".menuNav--buttonTagSelected"
+      const buttonForTagsAbove = document.querySelector(
+        '.menuNav--buttonTagSelected',
       );
 
-      let valueOfItemSelected = normalizeValues(e.target.innerHTML).trim();
-      let restArticles = [];
+      const valueOfItemSelected = normalizeValues(e.target.innerHTML).trim();
+      const restArticles = [];
       restArticles.splice(0, restArticles.length);
 
-      //Supprime la valeur entrée au clic sur un tag
+      // Supprime la valeur entrée au clic sur un tag
       if (inputAboveTarget.value) inputAboveTarget.value = null;
 
-      //Lance la recherche avancée par tag au clic sur un tag
+      // Lance la recherche avancée par tag au clic sur un tag
 
-      refreshRecipes(articles,restArticles, valueOfItemSelected);
-     // displayCorrespondantTagsOnly (articles, restArticles, valueOfItemSelected);
-     // returnDisplayedArticles(articles,restArticles);
+      refreshRecipes(articles, restArticles, valueOfItemSelected);
+      // displayCorrespondantTagsOnly (articles, restArticles, valueOfItemSelected);
+      // returnDisplayedArticles(articles,restArticles);
 
       // DEFINIT LA COULEUR DE L'ARRIERE-PLAN DU BOUTON DE TAG SELECTIONNE
-      const getBgColorOfTagsAbove = (e, className, color) => {
-        
+      const getBgColorOfTagsAbove = (className, color) => {
         if (e.target.parentNode?.className?.includes(className)) {
           buttonForTagsAbove.style.backgroundColor = color;
           arrayOfCrossCloseAbove.push(
-            document.querySelector(".menuNav--buttonTagSelected__crossClose")
+            document.querySelector('.menuNav--buttonTagSelected__crossClose'),
           );
         }
       };
 
-      getBgColorOfTagsAbove(e, "ing", "#3282f7");
-      getBgColorOfTagsAbove(e, "appliance", "#68d9a4");
-      getBgColorOfTagsAbove(e, "ustensils", "#ed6454");
+      getBgColorOfTagsAbove(e, 'ing', '#3282f7');
+      getBgColorOfTagsAbove(e, 'appliance', '#68d9a4');
+      getBgColorOfTagsAbove(e, 'ustensils', '#ed6454');
 
       closeTagAboveMenuNav(arrayOfCrossCloseAbove);
     });
@@ -287,29 +291,27 @@ const displayTagAboveMenuNav = (articles) => {
 // SUPPRIME LE TAG SELECTIONNE AU CLIC SUR LA CROIX
 const closeTagAboveMenuNav = (arrayOfCrossCloseAbove) => {
   arrayOfCrossCloseAbove.forEach((cross) => {
-    cross.addEventListener("click", (e) => {
-    
+    cross.addEventListener('click', (e) => {
       e.target.parentNode.remove();
-      //Lance la déselection des tags de recherches avancées et actualise les recettes + tags
-      let restArticles = [];
+      // Lance la déselection des tags de recherches avancées et actualise les recettes + tags
+      const restArticles = [];
       restArticles.splice(0, restArticles.length);
-      let input = document.querySelector(".menuNav--searchInput");
+      const input = document.querySelector('.menuNav--searchInput');
       if (!input.value) {
         refreshElementAfterRemoveTags(restArticles);
       }
-      let buttons = [
-        ...document.querySelectorAll(".menuNav--buttonTagSelected"),
+      const buttons = [
+        ...document.querySelectorAll('.menuNav--buttonTagSelected'),
       ];
-      let articles = [...document.querySelectorAll(".recipe")];
+      const articles = [...document.querySelectorAll('.recipe')];
       if (input.value && buttons.length < 1) {
         articles.forEach((article) => {
-          article.classList.remove("hidden");
-          let articleFooter =
-            article.firstChild.nextElementSibling.nextElementSibling;
-          let footerValuesNorm = normalizeValues(articleFooter.innerHTML);
-          let inputValue = normalizeValues(input.value);
+          article.classList.remove('hidden');
+          const articleFooter = article.firstChild.nextElementSibling.nextElementSibling;
+          const footerValuesNorm = normalizeValues(articleFooter.innerHTML);
+          const inputValue = normalizeValues(input.value);
           if (!footerValuesNorm.includes(inputValue)) {
-            article.classList.add("hidden");
+            article.classList.add('hidden');
           }
           returnDisplayedArticles(restArticles, articles);
           refreshDropDownMenus(restArticles);

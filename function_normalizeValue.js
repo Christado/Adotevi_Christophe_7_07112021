@@ -1,14 +1,12 @@
-const normalizeValues = (value) => {
-  return value
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase();
-};
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-param-reassign */
+const normalizeValues = (value) => value
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .toLowerCase();
 
 const sortByAlphabeticsOrder = (array) => {
-  array = array.sort((a, b) => {
-    return a > b ? 1 : -1;
-  });
+  array = array.sort((a, b) => (a > b ? 1 : -1));
 };
 
 export { normalizeValues, sortByAlphabeticsOrder };

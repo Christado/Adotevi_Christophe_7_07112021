@@ -1,9 +1,20 @@
-import { refreshRecipes } from "./refresh_items.js";
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-undef */
+/* eslint-disable no-new */
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-use-before-define */
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable max-len */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable import/no-cycle */
+/* eslint-disable import/extensions */
+import { refreshRecipes } from './refresh_items.js';
 
 class MainSearchFactory {
   constructor(input, articles) {
     this.input = input;
-    this.underInputMessage = document.querySelector("#under-input-message");
+    this.underInputMessage = document.querySelector('#under-input-message');
     this.articles = articles;
     this.searchWithInput(this.input, this.articles);
     this.focusOnMainSearchbarAfterWindowOnload();
@@ -14,15 +25,15 @@ class MainSearchFactory {
   }
 
   searchWithInput(input, articles) {
-    input.addEventListener("input", (e) => {
+    input.addEventListener('input', (e) => {
       if (input.value.length > 2) {
         research(articles, input);
       }
     });
-    input.addEventListener("keyup", (e) => {
-      if (e.key === "Backspace") {
+    input.addEventListener('keyup', (e) => {
+      if (e.key === 'Backspace') {
         articles.forEach((article) => {
-          article.classList.remove("hidden");
+          article.classList.remove('hidden');
         });
         research(articles, input);
       }
@@ -31,26 +42,26 @@ class MainSearchFactory {
 }
 
 const research = (articles, input) => {
-  let restArticles = [];
+  const restArticles = [];
   restArticles.splice(0, restArticles.length);
 
-  let errorMessage = document.querySelector("#error-message");
+  const errorMessage = document.querySelector('#error-message');
   if (errorMessage) errorMessage.remove();
 
   refreshRecipes(articles, restArticles, input.value);
 
- /* if (restArticles.length < 1) {
+  /* if (restArticles.length < 1) {
     displayErrorMessage();
-  }*/
+  } */
 };
 
 const displayErrorMessage = () => {
-  let menuNav = document.querySelector(".menuNav");
+  const menuNav = document.querySelector('.menuNav');
   menuNav.insertAdjacentHTML(
-    "afterend",
+    'afterend',
     `
         <main>
-        <p id = "error-message" >Oups...<i class="far fa-dizzy"></i><br>Votre recherche ne correspond à aucun résultat...Vous pouvez chercher "tarte aux pommes", "poisson", etc...</p></main>`
+        <p id = "error-message" >Oups...<i class="far fa-dizzy"></i><br>Votre recherche ne correspond à aucun résultat...Vous pouvez chercher "tarte aux pommes", "poisson", etc...</p></main>`,
   );
 };
 

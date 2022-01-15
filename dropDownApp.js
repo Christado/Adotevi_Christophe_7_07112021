@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable max-len */
 /* eslint-disable no-param-reassign */

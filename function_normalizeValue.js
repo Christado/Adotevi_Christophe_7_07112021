@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-param-reassign */
 const normalizeValues = (value) => value
   .normalize('NFD')
   .replace(/[\u0300-\u036f]/g, '')

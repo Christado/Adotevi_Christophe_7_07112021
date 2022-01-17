@@ -1,14 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-undef */
-/* eslint-disable no-new */
-/* eslint-disable class-methods-use-this */
-/* eslint-disable no-use-before-define */
-/* eslint-disable import/prefer-default-export */
-/* eslint-disable max-len */
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable import/no-cycle */
-/* eslint-disable import/extensions */
 import { refreshRecipes } from './refresh_items.js';
 
 class MainSearchFactory {
@@ -53,16 +42,6 @@ const research = (articles, input) => {
   /* if (restArticles.length < 1) {
     displayErrorMessage();
   } */
-};
-
-const displayErrorMessage = () => {
-  const menuNav = document.querySelector('.menuNav');
-  menuNav.insertAdjacentHTML(
-    'afterend',
-    `
-        <main>
-        <p id = "error-message" >Oups...<i class="far fa-dizzy"></i><br>Votre recherche ne correspond à aucun résultat...Vous pouvez chercher "tarte aux pommes", "poisson", etc...</p></main>`,
-  );
 };
 
 export { MainSearchFactory, research };

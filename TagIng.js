@@ -1,5 +1,3 @@
-/* eslint-disable import/extensions */
-/* eslint-disable import/prefer-default-export */
 import { addTag, removeTag } from './tag.js';
 
 export class TagIng {

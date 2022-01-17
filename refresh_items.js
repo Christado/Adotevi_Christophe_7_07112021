@@ -1,24 +1,10 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-undef */
-/* eslint-disable no-new */
-/* eslint-disable class-methods-use-this */
-/* eslint-disable no-use-before-define */
-/* eslint-disable import/prefer-default-export */
-/* eslint-disable max-len */
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable import/no-cycle */
-/* eslint-disable import/extensions */
+
 import { normalizeValues } from './function_normalizeValue.js';
 import { DisplayRecipesFactory } from './recipes_display.js';
 import { searchAlgo } from './first_algorithm.js';
 
 const refreshRecipes = (articles, restArticles, input) => {
   const filtredRecipes = searchAlgo(articles, input);
-  // const filtredTags = searchAlgo1(articles, input);
-  // display.addRecipeToMainContainer(filtredTags);
-  // returnDisplayedArticles(restArticles, articles, items, input);
-  // refreshDropDownMenus(restArticles);
 };
 
 const returnDisplayedArticles = (restArticles, articles) => {
@@ -129,18 +115,6 @@ const refreshRecipesAfterRemovingTags = (articles, restArticles, buttons) => {
   });
   returnDisplayedArticles(restArticles, articles);
   refreshDropDownMenus(restArticles);
-};
-
-const searchAlgo1 = (articles, input) => {
-  articles.forEach((article) => {
-    const articleFooter = article.firstChild.nextElementSibling.nextElementSibling;
-    const footerValuesNorm = normalizeValues(articleFooter.innerText);
-    const inputValueNorm = normalizeValues(input);
-    console.log(footerValuesNorm);
-    if (!footerValuesNorm.includes(inputValueNorm)) {
-      article.classList.add('hidden');
-    }
-  });
 };
 
 export {

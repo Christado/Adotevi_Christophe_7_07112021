@@ -1,9 +1,3 @@
-/* eslint-disable no-use-before-define */
-/* eslint-disable import/prefer-default-export */
-/* eslint-disable max-len */
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable import/no-cycle */
-/* eslint-disable import/extensions */
 import { normalizeValues } from './function_normalizeValue.js';
 import { recipes } from './JS/datas.js';
 import { DisplayRecipesFactory } from './recipes_display.js';

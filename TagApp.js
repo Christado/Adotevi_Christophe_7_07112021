@@ -1,15 +1,3 @@
-/* eslint-disable import/extensions */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-undef */
-/* eslint-disable no-new */
-/* eslint-disable class-methods-use-this */
-/* eslint-disable no-use-before-define */
-/* eslint-disable import/prefer-default-export */
-/* eslint-disable max-len */
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable import/no-cycle */
-/* eslint-disable import/extensions */
 import { addTag, removeTag } from './tag.js';
 
 export class TagApp {

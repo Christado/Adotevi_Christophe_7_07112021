@@ -11,6 +11,10 @@
         "sourceType": "module"
     },
     "rules": {
-        "linebreak-style": ["error", "windows"]
-    }
+        "linebreak-style": ["error", "windows"],
+        "max-len":"error"
+    },
+    "ignorePatterns": ["dropDownApp.js", "dropDownUst.js", "dropDownIng.js", "first_algorithm.js", "function_normalizeValue.js", "main_searchbar.js", "main.js", "navigation_inside_button.js", "recipes_display.js", "refresh_items.js", "search_inside_mainSearchBar.js", "tag.js", "TagApp.js", "TagIng.js", "TagUst.js", "**/vendor/*.js"]
+   
+    
 }

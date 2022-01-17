@@ -1,8 +1,3 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable no-unused-vars */
-/* eslint-disable class-methods-use-this */
-/* eslint-disable import/extensions */
-
 import { refreshRecipes } from './refresh_items.js';
 
 const research = (articles, input) => {
@@ -13,10 +8,6 @@ const research = (articles, input) => {
   if (errorMessage) errorMessage.remove();
 
   refreshRecipes(articles, restArticles, input.value);
-
-  /* if (restArticles.length < 1) {
-    displayErrorMessage();
-  } */
 };
 class MainSearchFactory {
   constructor(input, articles) {
@@ -47,15 +38,5 @@ class MainSearchFactory {
     });
   }
 }
-
-const displayErrorMessage = () => {
-  const menuNav = document.querySelector('.menuNav');
-  menuNav.insertAdjacentHTML(
-    'afterend',
-    `
-        <main>
-        <p id = "error-message" >Oups...<i class="far fa-dizzy"></i><br>Votre recherche ne correspond à aucun résultat...Vous pouvez chercher "tarte aux pommes", "poisson", etc...</p></main>`,
-  );
-};
 
 export { MainSearchFactory, research };

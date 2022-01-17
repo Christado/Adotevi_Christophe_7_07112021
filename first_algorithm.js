@@ -1,9 +1,5 @@
-/* eslint-disable import/extensions */
-/* eslint-disable import/prefer-default-export */
-
 import { normalizeValues } from './function_normalizeValue.js';
 import { recipes } from './JS/datas.js';
-// eslint-disable-next-line import/no-cycle
 import { DisplayRecipesFactory } from './recipes_display.js';
 // import { ButtonListFactory } from "./dropDownApp.js";
 // import { DropDowIng } from './dropDownIng.js';

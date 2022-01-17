@@ -1,11 +1,3 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable import/no-cycle */
-/* eslint-disable import/extensions */
-/* eslint-disable spaced-comment */
-/* eslint-disable class-methods-use-this */
-/* eslint-disable no-new */
-/* eslint-disable import/prefer-default-export */
-/* eslint-disable linebreak-style */
 import { recipes } from './JS/datas.js';
 import { DropDowIng } from './dropDownIng.js';
 import { DropDownUst } from './dropDownUst.js';
@@ -91,23 +83,6 @@ class DisplayRecipesFactory {
 
     return this.createRecipeDOMElement(recipe, ingredientinfos);
   }
-
-  /*refrshDropDown = (filterRecipes) => {
-    listOfIngredients.innerText = '';
-    listOfUstensils.innerText = '';
-    listOfAppliance.innerText = '';
-    new DropDowIng(
-      'ingredient',
-      buttonIngredients,
-      listOfIngredients,
-      'ingredients',
-      buttonIngredientExpanded,
-      'container-1_active',
-      filterRecipes,
-      searchByTag,
-
-    );
-  };*/
 
   initIngredient() {
     this.dropDowIng = new DropDowIng(

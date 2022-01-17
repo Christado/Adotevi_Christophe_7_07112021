@@ -1,10 +1,3 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable import/prefer-default-export */
-/* eslint-disable no-unused-vars */
-/* eslint-disable prefer-const */
-/* eslint-disable spaced-comment */
-/* eslint-disable no-new */
-/* eslint-disable import/extensions */
 import { MainSearchFactory } from './search_inside_mainSearchBar.js';
 import { normalizeValues } from './function_normalizeValue.js';
 import {

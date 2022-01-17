@@ -1,18 +1,3 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable no-shadow */
-/* eslint-disable class-methods-use-this */
-/* eslint-disable max-len */
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-use-before-define */
-/* eslint-disable new-cap */
-/* eslint-disable import/prefer-default-export */
-/* eslint-disable curly */
-/* eslint-disable prefer-const */
-/* eslint-disable arrow-parens */
-/* eslint-disable no-unused-vars */
-/* eslint-disable import/no-cycle */
-/* eslint-disable import/extensions */
-
 import {
   normalizeValues,
   sortByAlphabeticsOrder,

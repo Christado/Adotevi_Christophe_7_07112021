@@ -1,9 +1,3 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable import/prefer-default-export */
-/* eslint-disable class-methods-use-this */
-/* eslint-disable no-unused-vars */
-/* eslint-disable spaced-comment */
-/* eslint-disable import/extensions */
 import { normalizeValues } from './function_normalizeValue.js';
 
 class NavigateInButton {
@@ -24,7 +18,6 @@ class NavigateInButton {
     ];
     this.listOfItemsArray = [...listOfItems.children];
 
-    // eslint-disable-next-line padded-blocks
     this.searchThroughItems(this.inputsForSearchArray);
 
   }

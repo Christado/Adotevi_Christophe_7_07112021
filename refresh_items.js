@@ -1,16 +1,9 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable no-unused-vars */
-/* eslint-disable import/no-cycle */
-/* eslint-disable import/extensions */
 import { normalizeValues } from './function_normalizeValue.js';
 import { searchAlgo } from './first_algorithm.js';
 
 const refreshRecipes = (articles, restArticles, input) => {
   const filtredRecipes = searchAlgo(articles, input);
   // const filtredTags = searchAlgo1(articles, input);
-  // display.addRecipeToMainContainer(filtredTags);
-  // returnDisplayedArticles(restArticles, articles, items, input);
-  // refreshDropDownMenus(restArticles);
 };
 const returnDisplayedArticles = (restArticles, articles) => {
   articles.forEach((article) => {
@@ -120,18 +113,6 @@ const refreshElementAfterRemoveTags = (restArticles) => {
       item.classList.remove('hidden');
     });
   }
-};
-
-const searchAlgo1 = (articles, input) => {
-  articles.forEach((article) => {
-    const articleFooter = article.firstChild.nextElementSibling.nextElementSibling;
-    const footerValuesNorm = normalizeValues(articleFooter.innerText);
-    const inputValueNorm = normalizeValues(input);
-    console.log(footerValuesNorm);
-    if (!footerValuesNorm.includes(inputValueNorm)) {
-      article.classList.add('hidden');
-    }
-  });
 };
 
 export {

@@ -1,8 +1,6 @@
 import { normalizeValues } from './function_normalizeValue.js';
-import { recipes } from './JS/datas.js';
+import { recipes } from './datas.js';
 import { DisplayRecipesFactory } from './recipes_display.js';
-// import { ButtonListFactory } from "./dropDownApp.js";
-// import { DropDowIng } from './dropDownIng.js';
 
 let textInput = '';
 let selectedIngredient = [];
@@ -44,7 +42,6 @@ const removeTag = (tagName, type) => {
   }
 
   filterRecipes = procesSearch(textInput);
-  // console.table(filterRecipes)
   searchByAllIngredient();
   searchByAllUstensil();
   searchByAllAppliance();
@@ -52,9 +49,7 @@ const removeTag = (tagName, type) => {
 };
 
 const searchByIngredientPredicate = (recipe, normalizedInput) => {
-  /* const ingredientNames = recipe.ingredients.map(item => item.ingredient)
-    return ingredientNames.some(name => normalizeValues(name).includes(normalizedInput)) */
-
+  
   let existe = false;
   for (const ingredient of recipe.ingredients) {
     const ingredientName = ingredient.ingredient;
@@ -101,7 +96,6 @@ const searchByAllAppliance = () => {
 
 const display = new DisplayRecipesFactory(searchByTag, removeTag);
 // ALGO DE RECHERCHE 1
-// Différentes listes des dropDownMenus
 
 const searchByNamePredicate = (recipe, normalizedInput) => {
   const normalizedName = normalizeValues(recipe.name);
@@ -115,11 +109,7 @@ const searchByDescriptionPredicate = (recipe, normalizedInput) => {
 
 const procesSearch = (inputNorm) => {
   if (!inputNorm) { return recipes; }
-  /* return recipes.filter((recipe)=>{
-
-      // eslint-disable-next-line max-len
-      return searchByNamePredicate(recipe,inputNorm) || searchByDescriptionPredicate(recipe,inputNorm) || searchByIngredientPredicate(recipe,inputNorm);
-     }) */
+  
   const result = [];
   for (const recipe of recipes) {
     if (searchByNamePredicate(recipe, inputNorm)
@@ -135,7 +125,7 @@ const searchAlgo = (articles, input) => {
   textInput = inputValueNorm;
   filterRecipes = procesSearch(inputValueNorm);
   display.addRecipeToMainContainer(filterRecipes);
-  // refrshDropDown(filterRecipes);
+  
 };
 
 export {

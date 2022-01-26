@@ -1,4 +1,4 @@
-import { recipes } from './JS/datas.js';
+import { recipes } from './datas.js';
 import { DropDowIng } from './dropDownIng.js';
 import { DropDownUst } from './dropDownUst.js';
 import { DropDownApp } from './dropDownApp.js';

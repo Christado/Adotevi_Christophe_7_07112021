@@ -1,4 +1,3 @@
-// let arrayOfCrossCloseAbove = [];
 const tagSelectedContainer = document.querySelector(
   '.menuNav--buttons-selected-container',
 );

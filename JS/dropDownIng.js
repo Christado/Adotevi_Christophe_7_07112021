@@ -2,7 +2,7 @@ import {
   normalizeValues,
   sortByAlphabeticsOrder,
 } from './function_normalizeValue.js';
-// import { recipes } from "./JS/datas.js";
+
 import { NavigateInButton } from './navigation_inside_button.js';
 
 import {
@@ -12,30 +12,29 @@ import {
   refreshDropDownMenus,
   displayCorrespondantTagsOnly,
 } from './refresh_items.js';
-import { TagUst } from './TagUst.js';
+import { TagIng } from './TagIng.js';
 
-// Génère les élements de type TAGS dans les listes déroulantes
-class DropDownUst {
+
+class DropDowIng {
   constructor(
 
     recipes,
     searchByTag,
     dropTag,
   ) {
-    this.name = 'ustensil';
-
-    this.button = document.querySelector('#container-3_inactive');
+    this.name = 'ingredient';
+    this.button = document.querySelector('#container-1_inactive');
     this.listOfItems = document.querySelector(
-      '.dropDownMenus--input_active_list_ustensils',
+      '.dropDownMenus--input_active_list_ing',
     );
-    this.nameOfClass = 'ustensils';
-    this.buttonForDisplay = document.querySelector('#container-3_active');
+    this.nameOfClass = 'ingredients';
+    this.buttonForDisplay = document.querySelector('#container-1_active');
     this.crossCloseButton = [];
     this.allIngredients = [];
     this.allAppliances = [];
     this.allUstensils = [];
     this.arrayOfChevronUp = [];
-    this.inactiveContainerID = 'container-3_active';
+    this.inactiveContainerID = 'container-1_active';
     this.recipes = recipes;
     this.searchByTag = searchByTag;
     this.dropTag = dropTag;
@@ -61,7 +60,7 @@ class DropDownUst {
   }
 
   eraseDuplicateItem(array) {
-    array = Array.from(new Set(this.allUstensils));
+    array = Array.from(new Set(this.allIngredients));
   }
 
   addTagsToButton(nameOfClass) {
@@ -100,8 +99,8 @@ class DropDownUst {
     sortByAlphabeticsOrder(array);
 
     array.forEach((item) => {
-      const tagUst = new TagUst(item, this.searchByTag, this.dropTag);
-      tagUst.addTocontainer(this.listOfItems);
+      const tagIng = new TagIng(item, this.searchByTag, this.dropTag);
+      tagIng.addTocontainer(this.listOfItems);
     });
   }
 
@@ -125,6 +124,7 @@ class DropDownUst {
     this.closeDropDownMenuByClickingOutside(this.button, this.buttonForDisplay);
     this.navigateInButton = new NavigateInButton(this.listOfItems, this.articlesArray);
   }
+
 
   // OUVRE ET FERME LES LISTES DEROULANTES
   openNavigationList(buttonInactive, buttonActive) {
@@ -242,8 +242,6 @@ const displayTagAboveMenuNav = (articles) => {
       // Lance la recherche avancée par tag au clic sur un tag
 
       refreshRecipes(articles, restArticles, valueOfItemSelected);
-      // displayCorrespondantTagsOnly (articles, restArticles, valueOfItemSelected);
-      // returnDisplayedArticles(articles,restArticles);
 
       // DEFINIT LA COULEUR DE L'ARRIERE-PLAN DU BOUTON DE TAG SELECTIONNE
       const getBgColorOfTagsAbove = (className, color) => {
@@ -297,4 +295,4 @@ const closeTagAboveMenuNav = (arrayOfCrossCloseAbove) => {
   });
 };
 
-export { DropDownUst, displayTagAboveMenuNav, closeTagAboveMenuNav };
+export { DropDowIng, displayTagAboveMenuNav, closeTagAboveMenuNav };

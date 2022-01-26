@@ -2,8 +2,6 @@ import {
   normalizeValues,
   sortByAlphabeticsOrder,
 } from './function_normalizeValue.js';
-// import { recipes } from './JS/datas.js';
-// import { recipes } from "./JS/datas.js";
 import { NavigateInButton } from './navigation_inside_button.js';
 
 import {
@@ -11,7 +9,6 @@ import {
   refreshElementAfterRemoveTags,
   returnDisplayedArticles,
   refreshDropDownMenus,
-  // displayCorrespondantTagsOnly,
 } from './refresh_items.js';
 
 import { TagApp } from './TagApp.js';
@@ -121,8 +118,6 @@ class DropDownApp {
     this.eraseDuplicateItem(this.allUstensils);
 
     this.openNavigationList(this.button, this.buttonForDisplay);
-
-    // this.navigateInButton.refresh();
 
     this.closeDropDownMenuByClickingOutside(this.button, this.buttonForDisplay);
     this.navigateInButton = new NavigateInButton(this.listOfItems, this.articlesArray);
@@ -244,8 +239,6 @@ const displayTagAboveMenuNav = (articles) => {
       // Lance la recherche avancée par tag au clic sur un tag
 
       refreshRecipes(articles, restArticles, valueOfItemSelected);
-      // displayCorrespondantTagsOnly (articles, restArticles, valueOfItemSelected);
-      // returnDisplayedArticles(articles,restArticles);
 
       // DEFINIT LA COULEUR DE L'ARRIERE-PLAN DU BOUTON DE TAG SELECTIONNE
       const getBgColorOfTagsAbove = (className, color) => {

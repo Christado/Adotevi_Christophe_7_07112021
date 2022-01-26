@@ -38,10 +38,6 @@ const research = (articles, input) => {
   if (errorMessage) errorMessage.remove();
 
   refreshRecipes(articles, restArticles, input.value);
-
-  /* if (restArticles.length < 1) {
-    displayErrorMessage();
-  } */
 };
 
 export { MainSearchFactory, research };

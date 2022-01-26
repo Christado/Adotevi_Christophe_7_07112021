@@ -1,6 +1,5 @@
 
 import { normalizeValues } from './function_normalizeValue.js';
-import { DisplayRecipesFactory } from './recipes_display.js';
 import { searchAlgo } from './first_algorithm.js';
 
 const refreshRecipes = (articles, restArticles, input) => {
@@ -48,32 +47,6 @@ const displayCorrespondantTagsOnly = (restArticles, items) => {
   });
 };
 
-const eraseValuesAlreadySelected = (items) => {
-  const selectedButtons = [
-    ...document.querySelectorAll('.menuNav--buttonTagSelected'),
-  ];
-  let inputValue = document.querySelector('.menuNav--searchInput').value;
-  inputValue = normalizeValues(inputValue);
-  let nameOfItem;
-  items.forEach((item) => {
-    nameOfItem = normalizeValues(item.innerText).trim();
-    if (nameOfItem === inputValue) {
-      item.classList.add('hidden');
-    }
-  });
-
-  selectedButtons.forEach((button) => {
-    let buttonName = button.firstChild.nextElementSibling.innerText;
-    buttonName = normalizeValues(buttonName);
-    items.forEach((item) => {
-      nameOfItem = item.innerText;
-      nameOfItem = normalizeValues(nameOfItem).trim();
-      if (nameOfItem === buttonName) {
-        item.classList.add('hidden');
-      }
-    });
-  });
-};
 
 const refreshElementAfterRemoveTags = (restArticles) => {
   const articles = [...document.querySelectorAll('.recipe')];
@@ -124,5 +97,4 @@ export {
   refreshDropDownMenus,
   refreshRecipesAfterRemovingTags,
   displayCorrespondantTagsOnly,
-  // searchAlgo1,
 };

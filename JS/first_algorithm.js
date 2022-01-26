@@ -1,8 +1,6 @@
 import { normalizeValues } from './function_normalizeValue.js';
-import { recipes } from './JS/datas.js';
+import { recipes } from './datas.js';
 import { DisplayRecipesFactory } from './recipes_display.js';
-// import { ButtonListFactory } from "./dropDownApp.js";
-// import { DropDowIng } from './dropDownIng.js';
 const display = new DisplayRecipesFactory();
 
 let textInput = '';
@@ -106,7 +104,6 @@ const removeTag = (tagName, type) => {
   }
 
   filterRecipes = procesSearch(textInput);
-  // console.table(filterRecipes)
   searchByAllIngredient();
   searchByAllUstensil();
   searchByAllAppliance();
@@ -117,7 +114,6 @@ const searchAlgo = (articles, input) => {
   textInput = inputValueNorm;
   filterRecipes = procesSearch(inputValueNorm);
   display.addRecipeToMainContainer(filterRecipes);
-  // refrshDropDown(filterRecipes);
 };
 
 display.searchByTag = searchByTag;

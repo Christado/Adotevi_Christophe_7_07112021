@@ -1,4 +1,4 @@
-import { recipes } from './JS/datas.js';
+import { recipes } from './datas.js';
 import { DropDowIng } from './dropDownIng.js';
 import { DropDownUst } from './dropDownUst.js';
 import { DropDownApp } from './dropDownApp.js';
@@ -9,13 +9,9 @@ class DisplayRecipesFactory {
   dropTag = null;
 
   constructor() {
-    //this.searchByTag = searchByTag;
-    //this.dropTag = dropTag;
+    
     this.recipesContainer = document.querySelector('#recipes-container');
-    /*this.init();
-    this.initIngredient();
-    this.initUstensil();
-    this.initAppliance();*/
+    
   }
 
   init() {

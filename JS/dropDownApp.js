@@ -2,7 +2,6 @@ import {
   normalizeValues,
   sortByAlphabeticsOrder,
 } from './function_normalizeValue.js';
-// import { recipes } from "./JS/datas.js";
 import { NavigateInButton } from './navigation_inside_button.js';
 
 import {
@@ -10,38 +9,37 @@ import {
   refreshElementAfterRemoveTags,
   returnDisplayedArticles,
   refreshDropDownMenus,
-  displayCorrespondantTagsOnly,
 } from './refresh_items.js';
-import { TagUst } from './TagUst.js';
+
+import { TagApp } from './TagApp.js';
 
 // Génère les élements de type TAGS dans les listes déroulantes
-class DropDownUst {
+class DropDownApp {
   constructor(
 
     recipes,
     searchByTag,
     dropTag,
   ) {
-    this.name = 'ustensil';
+    this.name = 'appliance';
 
-    this.button = document.querySelector('#container-3_inactive');
+    this.button = document.querySelector('#container-2_inactive');
     this.listOfItems = document.querySelector(
-      '.dropDownMenus--input_active_list_ustensils',
+      '.dropDownMenus--input_active_list_appliance',
     );
-    this.nameOfClass = 'ustensils';
-    this.buttonForDisplay = document.querySelector('#container-3_active');
+    this.nameOfClass = 'appliances';
+    this.buttonForDisplay = document.querySelector('#container-2_active');
     this.crossCloseButton = [];
     this.allIngredients = [];
     this.allAppliances = [];
     this.allUstensils = [];
     this.arrayOfChevronUp = [];
-    this.inactiveContainerID = 'container-3_active';
+    this.inactiveContainerID = 'container-2_active';
     this.recipes = recipes;
     this.searchByTag = searchByTag;
     this.dropTag = dropTag;
 
     this.articlesArray = [...document.querySelectorAll('.recipe')];
-    // METHODES APPELEES
 
     this.addTagsToButton(this.nameOfClass);
 
@@ -61,7 +59,7 @@ class DropDownUst {
   }
 
   eraseDuplicateItem(array) {
-    array = Array.from(new Set(this.allUstensils));
+    array = Array.from(new Set(this.allAppliances));
   }
 
   addTagsToButton(nameOfClass) {
@@ -100,8 +98,8 @@ class DropDownUst {
     sortByAlphabeticsOrder(array);
 
     array.forEach((item) => {
-      const tagUst = new TagUst(item, this.searchByTag, this.dropTag);
-      tagUst.addTocontainer(this.listOfItems);
+      const tagApp = new TagApp(item, this.searchByTag, this.dropTag);
+      tagApp.addTocontainer(this.listOfItems);
     });
   }
 
@@ -120,8 +118,6 @@ class DropDownUst {
 
     this.openNavigationList(this.button, this.buttonForDisplay);
 
-    // this.navigateInButton.refresh();
-
     this.closeDropDownMenuByClickingOutside(this.button, this.buttonForDisplay);
     this.navigateInButton = new NavigateInButton(this.listOfItems, this.articlesArray);
   }
@@ -129,7 +125,6 @@ class DropDownUst {
   // OUVRE ET FERME LES LISTES DEROULANTES
   openNavigationList(buttonInactive, buttonActive) {
     buttonInactive.addEventListener('click', (e) => {
-      // Supprime la classe 'Erase Temporarly' à l'ouverture du menu déroulant pou afficher le reste des tags disponibles
       let listOfItems = [...document.querySelectorAll('.name-of-item')];
       listOfItems.forEach((li) => {
         if (li.className === 'name-of-item erase-temporarly') {
@@ -242,8 +237,6 @@ const displayTagAboveMenuNav = (articles) => {
       // Lance la recherche avancée par tag au clic sur un tag
 
       refreshRecipes(articles, restArticles, valueOfItemSelected);
-      // displayCorrespondantTagsOnly (articles, restArticles, valueOfItemSelected);
-      // returnDisplayedArticles(articles,restArticles);
 
       // DEFINIT LA COULEUR DE L'ARRIERE-PLAN DU BOUTON DE TAG SELECTIONNE
       const getBgColorOfTagsAbove = (e, className, color) => {
@@ -297,4 +290,4 @@ const closeTagAboveMenuNav = (arrayOfCrossCloseAbove) => {
   });
 };
 
-export { DropDownUst, displayTagAboveMenuNav, closeTagAboveMenuNav };
+export { DropDownApp, displayTagAboveMenuNav, closeTagAboveMenuNav };

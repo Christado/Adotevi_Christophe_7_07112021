@@ -5,10 +5,6 @@ class NavigateInButton {
     this.listOfItems = listOfItems;
     console.log(articles);
     this.articles = articles;
-    /*this.items = items;
-    this.type = type;
-    this.input = null;
-    this.onSearch = onSearch; */
 
     this.inputsForSearchArray = [
       ...document.querySelectorAll('.dropDownMenus--input_active_title'),
@@ -19,7 +15,6 @@ class NavigateInButton {
     this.listOfItemsArray = [...listOfItems.children];
 
     this.searchThroughItems(this.inputsForSearchArray);
-
   }
 
   searchThroughItems(inputs) {
@@ -46,10 +41,6 @@ class NavigateInButton {
       });
     });
   }
-
-  /* refresh () {
-    this.searchThroughItems(this.inputsForSearchArray);
-  }*/
 
   //Affiche les items dans la liste déroulante qui ont la même valeur que la saisie
   displayItemsWithSameValuesAsEnteredInInput(titleOfItems, valueOfInput, li) {

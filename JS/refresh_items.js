@@ -3,7 +3,6 @@ import { searchAlgo } from './first_algorithm.js';
 
 const refreshRecipes = (articles, restArticles, input) => {
   const filtredRecipes = searchAlgo(articles, input);
-  // const filtredTags = searchAlgo1(articles, input);
 };
 const returnDisplayedArticles = (restArticles, articles) => {
   articles.forEach((article) => {
@@ -12,8 +11,6 @@ const returnDisplayedArticles = (restArticles, articles) => {
     }
   });
 };
-
-// ACTUALISE LES DROPDOWN MENUS
 
 const eraseAllTags = () => {
   const items = [...document.querySelectorAll('.name-of-item')];
@@ -122,5 +119,4 @@ export {
   refreshDropDownMenus,
   refreshRecipesAfterRemovingTags,
   displayCorrespondantTagsOnly,
-  // searchAlgo1,
 };
